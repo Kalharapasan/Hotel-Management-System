@@ -4,22 +4,20 @@ namespace App\Core;
 
 class Database
 {
-
     private static $instance = null;
     private $conn;
 
-    private $host = 'localhost';
-    private $user = 'root';
-    private $pass = '';
-    private $dbname = 'hotel_management_db';
-
     private function __construct()
     {
+        $host = $_ENV['DB_HOST'];
+        $user = $_ENV['DB_USER'];
+        $pass = $_ENV['DB_PASS'];
+        $dbname = $_ENV['DB_NAME'];
 
         $this->conn = new \mysqli(
-            $this->host,
-            $this->user,
-            $this->pass
+            $host,
+            $user,
+            $pass
         );
 
         if ($this->conn->connect_error) {
@@ -27,15 +25,14 @@ class Database
         }
 
         $this->conn->query(
-            "CREATE DATABASE IF NOT EXISTS {$this->dbname}"
+            "CREATE DATABASE IF NOT EXISTS `$dbname`"
         );
 
-        $this->conn->select_db($this->dbname);
+        $this->conn->select_db($dbname);
     }
 
     public static function getInstance()
     {
-
         if (self::$instance === null) {
             self::$instance = new Database();
         }
