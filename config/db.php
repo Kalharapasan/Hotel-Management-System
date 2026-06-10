@@ -17,3 +17,10 @@ $tables = [
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )",
 ];
+
+// Create Tables
+foreach ($tables as $name => $sql) {
+    if (!$conn->query($sql)) {
+        die("Error creating table {$name}: " . $conn->error);
+    }
+}
