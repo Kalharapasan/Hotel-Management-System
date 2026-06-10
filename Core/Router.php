@@ -1,27 +1,26 @@
 <?php
+
 namespace App\Core;
-class Router {
-    protected $routes = [];
-    public function add($method, $uri, $controller) {
-        $this->routes[] = ['method' => $method, 'uri' => '/' . trim($uri, '/'), 'controller' => $controller];
+
+class Router
+{
+    private $routes = [];
+
+    public function add($method, $uri, $action)
+    {
+        $this->routes[$method][$uri] = $action;
     }
-    public function handle($method, $uri) {
-        $uri = '/' . trim(explode('?', $uri)[0], '/');
-        foreach ($this->routes as $route) {
-            if ($route['method'] === $method && $route['uri'] === $uri) {
-                $parts = explode('@', $route['controller']);
-                $controllerName = "App\\Controllers\\" . $parts[0];
-                $methodName = $parts[1];
-                if (class_exists($controllerName)) {
-                    $controller = new $controllerName();
-                    if (method_exists($controller, $methodName)) {
-                        $controller->$methodName();
-                        return;
-                    }
-                }
-            }
+
+    public function handle($method, $uri)
+    {
+        if (!isset($this->routes[$method][$uri])) {
+            die("404 - Page Not Found");
         }
-        header("HTTP/1.0 404 Not Found");
-        echo "<h1>404 - Page Not Found</h1><p>Route $uri not found.</p>";
+
+        [$controller, $action] = explode('@', $this->routes[$method][$uri]);
+
+        $controller = "App\\Controllers\\$controller";
+
+        (new $controller)->$action();
     }
 }
