@@ -4,73 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | LuxeStay</title>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Outfit', sans-serif; }</style>
 </head>
-<body class="bg-gray-100 flex justify-center items-center min-h-screen">
-
-    <!-- Login Container -->
-    <div class="w-96 bg-white p-6 border">
-
-        <!-- Heading -->
-        <div class="text-center mb-6">
-            <h1 class="text-2xl font-bold">Welcome Back</h1>
-            <p>Please login to your account</p>
+<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-md w-full bg-white rounded-[40px] shadow-2xl p-10 border border-slate-100">
+        <div class="text-center mb-10">
+            <h1 class="text-3xl font-bold text-slate-900">Welcome Back</h1>
+            <p class="text-slate-500 mt-2">Please login to your account</p>
         </div>
 
-        <!-- Error Message -->
         <?php if(!empty($error)): ?>
-            <div class="bg-red-100 text-red-600 p-2 mb-4 border">
-                <?php echo $error; ?>
-            </div>
+            <div class="bg-red-50 text-red-600 p-4 rounded-2xl mb-6 text-sm border border-red-100"><?php echo $error; ?></div>
         <?php endif; ?>
 
-        <!-- Login Form -->
-        <form action="/login" method="POST">
-
-            <!-- Email Input -->
-            <div class="mb-4">
-                <label>Email Address</label>
-                <input
-                    type="email"
-                    name="email"
-                    required
-                    class="w-full p-2 border"
-                >
+        <form action="/login" method="POST" class="space-y-5">
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Email Address</label>
+                <input type="email" name="email" required class="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
             </div>
-
-            <!-- Password Input -->
-            <div class="mb-4">
-                <label>Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    required
-                    class="w-full p-2 border"
-                >
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-1">Password</label>
+                <input type="password" name="password" required class="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
             </div>
-
-            <!-- Login Button -->
-            <button
-                type="submit"
-                class="w-full bg-blue-500 text-white p-2"
-            >
-                Login
-            </button>
-
+            <button type="submit" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 transition shadow-xl shadow-indigo-100">Login</button>
         </form>
 
-        <!-- Register Link -->
-        <p class="text-center mt-4">
-            New here?
-            <a href="/register" class="text-blue-500">
-                Create Account
-            </a>
+        <p class="text-center text-slate-500 mt-8">
+            New here? <a href="/register" class="text-indigo-600 font-bold">Create Account</a>
         </p>
-
     </div>
-
 </body>
 </html>
