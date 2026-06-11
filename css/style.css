@@ -1,0 +1,76 @@
+/* Body Style */
+body {
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+/* Glass Effect */
+.glass {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 20px;
+}
+
+.glass-dark {
+    background-color: #0f172a;
+    color: white;
+    border: 1px solid #444444;
+    padding: 20px;
+}
+
+/* Gradient Background */
+.bg-gradient-premium {
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
+}
+
+/* Card Style */
+.card-hover {
+    border: 1px solid #dddddd;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.card-hover:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: #4f46e5;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #4338ca;
+}
+
+/* Input Field */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.input-field:focus {
+    border-color: #4f46e5;
+    outline: none;
+}
