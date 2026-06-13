@@ -54,7 +54,10 @@
     </main>
 
     <footer class="bg-slate-900 text-white py-12 mt-24">
-        
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="text-2xl font-bold mb-4">LuxeStay</div>
+            <p class="text-slate-400">&copy; <?php echo date('Y'); ?> LuxeStay International. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="/js/main.js"></script>

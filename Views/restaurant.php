@@ -15,8 +15,12 @@
             <div class="flex space-x-8 items-center">
                 <a href="/" class="text-slate-600 hover:text-indigo-600 transition">Home</a>
                 <a href="/restaurant" class="text-indigo-600 font-bold">Restaurant</a>
-                
-              
+                <?php if(isset($_SESSION['user_name'])): ?>
+                    <span class="text-slate-900 font-bold">Hi, <?php echo $_SESSION['user_name']; ?></span>
+                    <a href="/logout" class="text-red-500 text-sm">Logout</a>
+                <?php else: ?>
+                    <a href="/login" class="text-slate-600 font-bold hover:text-indigo-600">Login</a>
+                <?php endif; ?>
             </div>
         </div>
     </nav>
@@ -31,10 +35,25 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-20">
-        
+        <?php if(!empty($message)): ?>
+            <div class="bg-green-50 text-green-600 p-6 rounded-3xl mb-12 border border-green-100 font-bold text-center"><?php echo $message; ?></div>
+        <?php endif; ?>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            
+            <?php while($m = $menu->fetch_assoc()): ?>
+            <div class="bg-white rounded-[40px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition duration-500 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="<?php echo $m['image_url']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
+                    <div class="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-1 rounded-full font-bold text-indigo-600 shadow-sm">$<?php echo $m['price']; ?></div>
+                </div>
+                <div class="p-8">
+                    <span class="text-xs font-bold uppercase text-indigo-500 tracking-widest mb-2 block"><?php echo $m['category']; ?></span>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2"><?php echo $m['name']; ?></h3>
+                    <p class="text-slate-500 text-sm mb-6 line-clamp-2"><?php echo $m['description']; ?></p>
+                    <a href="/restaurant?order=<?php echo $m['id']; ?>" class="block text-center bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-indigo-600 transition">Order Now</a>
+                </div>
+            </div>
+            <?php endwhile; ?>
         </div>
     </main>
 

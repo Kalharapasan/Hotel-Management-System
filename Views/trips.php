@@ -1,3 +1,8 @@
+<?php
+require_once 'config/db.php';
+$conn = getDb();
+$trips = $conn->query("SELECT * FROM trips ORDER BY created_at DESC");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,5 +32,31 @@
         </div>
     </nav>
 
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold text-slate-900 mb-2">Curated Trip Plans</h1>
+        <p class="text-slate-500 mb-12">Handpicked adventures across the globe.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <?php while($trip = $trips->fetch_assoc()): ?>
+            <div class="group cursor-pointer">
+                <div class="relative h-80 rounded-3xl overflow-hidden mb-4">
+                    <img src="<?php echo $trip['image_url']; ?>" alt="<?php echo $trip['title']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <span class="bg-indigo-600 px-3 py-1 rounded-full text-xs font-bold mb-2 inline-block"><?php echo $trip['duration']; ?></span>
+                        <h3 class="text-2xl font-bold"><?php echo $trip['title']; ?></h3>
+                    </div>
+                </div>
+                <div class="px-2">
+                    <p class="text-slate-500 text-sm mb-4 line-clamp-2"><?php echo $trip['description']; ?></p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-slate-900">From $<?php echo number_format($trip['price']); ?></span>
+                        <button class="bg-slate-900 text-white px-6 py-2 rounded-xl font-semibold hover:bg-indigo-600 transition">Explore</button>
+                    </div>
+                </div>
+            </div>
+            <?php endwhile; ?>
+        </div>
+    </main>
 </body>
 </html>
