@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-use App\Core\Database;
+
 use App\Core\Controller;
 use App\Models\Hotel;
 
@@ -25,7 +25,7 @@ class HomeController extends Controller {
             'hotels' => $hotels,
             'categories' => $model->getCategories(),
             'gallery' => $model->getGallery(),
-            'employees' => $this->$db->query("SELECT * FROM employees WHERE status='active' LIMIT 4")
+            'employees' => $this->db->query("SELECT * FROM employees WHERE status='active' LIMIT 4")
         ];
         $this->view('home', $data);
     }
