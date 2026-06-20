@@ -82,7 +82,7 @@
                                 <span class="font-bold text-slate-900">$<?php echo number_format($o['total_amount'], 2); ?></span>
                                 <span class="text-xs font-bold text-indigo-600 uppercase"><?php echo $o['status']; ?></span>
                             </div>
-                            <div class="text-xs text-slate-400"><?php echo date('M d, Y', strtotime($o['created_at'])); ?></div>
+                            <div class="text-xs text-slate-400"><?php echo date('M d, Y', strtotime($o['order_date'])); ?></div>
                         </div>
                         <?php endwhile; ?>
                     </div>

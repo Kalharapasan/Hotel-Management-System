@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Database;
 use App\Models\User;
 
 class ProfileController extends Controller {
@@ -22,7 +23,7 @@ class ProfileController extends Controller {
         
         $bookings = $db->query("SELECT b.*, r.room_type, h.name as hotel_name FROM bookings b JOIN rooms r ON b.item_id = r.id JOIN hotels h ON r.hotel_id = h.id WHERE b.user_id = $user_id AND b.item_type = 'room' ORDER BY b.booking_date DESC");
         
-        $orders = $db->query("SELECT * FROM restaurant_orders WHERE user_id = $user_id ORDER BY created_at DESC");
+        $orders = $db->query("SELECT * FROM restaurant_orders WHERE user_id = $user_id ORDER BY order_date DESC");
 
         $this->view('auth/profile', [
             'user' => $user,

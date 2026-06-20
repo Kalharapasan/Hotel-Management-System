@@ -62,14 +62,35 @@ $router->add('GET', '/admin/employees', 'AdminController@employees');
 $router->add('POST', '/admin/save-employee', 'AdminController@saveEmployee');
 $router->add('GET', '/admin/delete-employee', 'AdminController@deleteEmployee');
 $router->add('GET', '/admin/flights', 'AdminController@flights');
+$router->add('POST', '/admin/save-flight', 'AdminController@saveFlight');
+$router->add('GET', '/admin/delete-flight', 'AdminController@deleteFlight');
 $router->add('GET', '/admin/trips', 'AdminController@trips');
+$router->add('POST', '/admin/save-trip', 'AdminController@saveTrip');
+$router->add('GET', '/admin/delete-trip', 'AdminController@deleteTrip');
 $router->add('GET', '/admin/bookings', 'AdminController@bookings');
 $router->add('GET', '/admin/bill', 'AdminController@generateBill');
 $router->add('POST', '/admin/checkout', 'AdminController@completeCheckout');
 $router->add('GET', '/admin/billing', 'AdminController@billing');
 $router->add('GET', '/admin/site-settings', 'AdminController@siteSettings');
+$router->add('POST', '/admin/save-site-setting', 'AdminController@saveSiteSetting');
+$router->add('GET', '/admin/restaurant', 'AdminController@restaurantManage');
+$router->add('POST', '/admin/save-menu-item', 'AdminController@saveMenuItem');
+$router->add('POST', '/admin/update-order-status', 'AdminController@updateOrderStatus');
+
+// Public - Trips & Flights
+$router->add('GET', '/trips', 'TripController@index');
+$router->add('GET', '/flights', 'FlightController@index');
 
 // Handle the request
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
+
+// Strip the base path so the app works whether it lives at the
+// web server's document root (e.g. http://localhost/) or inside a
+// subfolder (e.g. http://localhost/Hotel-Management-System/).
+$scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+if ($scriptDir !== '/' && strpos($uri, $scriptDir) === 0) {
+    $uri = substr($uri, strlen($scriptDir));
+}
+
 $router->handle($method, $uri);

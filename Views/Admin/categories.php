@@ -12,7 +12,7 @@
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div class="p-6"><span class="text-2xl font-bold text-indigo-400">LuxeStay Admin</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="/admin/dashboard" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Dashboard</a>
+            <a href="/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Dashboard</a>
             <a href="/admin/categories" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Room Categories</a>
             <a href="/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Hotels</a>
             <a href="/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Rooms</a>

@@ -20,6 +20,8 @@
                 <div class="flex items-center"><span class="text-2xl font-bold text-indigo-600">LuxeStay</span></div>
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="/" class="text-indigo-600 font-bold">Hotels</a>
+                    <a href="/trips" class="text-gray-700 hover:text-indigo-600">Trips</a>
+                    <a href="/flights" class="text-gray-700 hover:text-indigo-600">Flights</a>
                     <a href="/restaurant" class="text-gray-700 hover:text-indigo-600">Restaurant</a>
                     <a href="/about" class="text-gray-700 hover:text-indigo-600">About</a>
                     <a href="/contact" class="text-gray-700 hover:text-indigo-600">Contact</a>

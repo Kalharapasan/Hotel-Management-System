@@ -1,18 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: login.php");
-    exit();
-}
-require_once '../config/db.php';
-$conn = getDb();
-
-$bookings = $conn->query("SELECT b.*, u.fullname, u.email 
-                          FROM bookings b 
-                          JOIN users u ON b.user_id = u.id 
-                          ORDER BY b.booking_date DESC");
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +12,11 @@ $bookings = $conn->query("SELECT b.*, u.fullname, u.email
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div class="p-6"><span class="text-2xl font-bold text-indigo-400">LuxeStay Admin</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="dashboard.php" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
-            <a href="manage_hotels.php" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Hotels</a>
-            <a href="manage_flights.php" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Flights</a>
-            <a href="manage_trips.php" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Trips</a>
-            <a href="view_bookings.php" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Bookings</a>
+            <a href="/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
+            <a href="/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Hotels</a>
+            <a href="/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Flights</a>
+            <a href="/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Trips</a>
+            <a href="/admin/bookings" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Bookings</a>
         </nav>
     </aside>
 

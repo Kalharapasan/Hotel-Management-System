@@ -20,8 +20,12 @@
             <a href="/admin/categories" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Categories</a>
             <a href="/admin/customers" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Customers</a>
             <a href="/admin/employees" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Employees</a>
+            <a href="/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Flights</a>
+            <a href="/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Trips</a>
+            <a href="/admin/restaurant" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Restaurant</a>
             <a href="/admin/bookings" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Bookings</a>
             <a href="/admin/billing" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Billing</a>
+            <a href="/admin/site-settings" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Site Settings</a>
         </nav>
         <div class="p-4 border-t border-slate-800">
             <a href="/logout" class="flex items-center px-4 py-3 text-red-400 hover:bg-red-500/10 rounded-2xl transition">Logout</a>

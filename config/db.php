@@ -204,6 +204,12 @@ if ($checkAdmins->num_rows == 0) {
         ('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb', 'Hotel Lobby'),
         ('https://images.unsplash.com/photo-1584132967334-10e028bd69f7', 'Infinity Pool'),
         ('https://images.unsplash.com/photo-1571896349842-33c89424de2d', 'Beach Side View')");
+
+    // Site Settings
+    $conn->query("INSERT INTO site_settings (page_key, title, content, image_url) VALUES 
+        ('home_hero', 'Discover Luxury, Redefined.', 'Book the finest hotels, flights, and trips - all in one seamless experience.', 'https://images.unsplash.com/photo-1566073771259-6a8506099945'),
+        ('about', 'Our Story', 'Redefining luxury hospitality since 2010.', ''),
+        ('contact', 'Get in Touch', 'We are here to assist you 24/7.', '')");
 }
 
 function getDb() {

@@ -276,4 +276,144 @@ class AdminController extends Controller {
         $data['payments'] = $this->db->query("SELECT p.*, b.item_type, u.fullname FROM payments p JOIN bookings b ON p.booking_id = b.id JOIN users u ON b.user_id = u.id ORDER BY p.created_at DESC");
         $this->view('admin/billing', $data);
     }
+
+    // --- Flights ---
+    public function flights() {
+        $data['flights'] = $this->db->query("SELECT * FROM flights ORDER BY created_at DESC");
+        $data['edit_flight'] = null;
+        if (isset($_GET['edit'])) {
+            $id = (int) $_GET['edit'];
+            $data['edit_flight'] = $this->db->query("SELECT * FROM flights WHERE id = $id")->fetch_assoc();
+        }
+        $this->view('admin/flights', $data);
+    }
+
+    public function saveFlight() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $airline = $this->db->real_escape_string($_POST['airline']);
+            $departure = $this->db->real_escape_string($_POST['departure']);
+            $arrival = $this->db->real_escape_string($_POST['arrival']);
+            $price = $_POST['price'];
+            $departure_time = $this->db->real_escape_string($_POST['departure_time']);
+
+            if (isset($_POST['flight_id']) && !empty($_POST['flight_id'])) {
+                $id = (int) $_POST['flight_id'];
+                $this->db->query("UPDATE flights SET airline='$airline', departure='$departure', arrival='$arrival', price='$price', departure_time='$departure_time' WHERE id=$id");
+            } else {
+                $this->db->query("INSERT INTO flights (airline, departure, arrival, price, departure_time) VALUES ('$airline', '$departure', '$arrival', '$price', '$departure_time')");
+            }
+            $this->redirect('/admin/flights');
+        }
+    }
+
+    public function deleteFlight() {
+        if (isset($_GET['id'])) {
+            $id = (int) $_GET['id'];
+            $this->db->query("DELETE FROM flights WHERE id=$id");
+            $this->redirect('/admin/flights');
+        }
+    }
+
+    // --- Trips ---
+    public function trips() {
+        $data['trips'] = $this->db->query("SELECT * FROM trips ORDER BY created_at DESC");
+        $data['edit_trip'] = null;
+        if (isset($_GET['edit'])) {
+            $id = (int) $_GET['edit'];
+            $data['edit_trip'] = $this->db->query("SELECT * FROM trips WHERE id = $id")->fetch_assoc();
+        }
+        $this->view('admin/trips', $data);
+    }
+
+    public function saveTrip() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $this->db->real_escape_string($_POST['title']);
+            $description = $this->db->real_escape_string($_POST['description']);
+            $duration = $this->db->real_escape_string($_POST['duration']);
+            $price = $_POST['price'];
+            $image_url = $this->db->real_escape_string($_POST['image_url']);
+
+            if (isset($_POST['trip_id']) && !empty($_POST['trip_id'])) {
+                $id = (int) $_POST['trip_id'];
+                $this->db->query("UPDATE trips SET title='$title', description='$description', duration='$duration', price='$price', image_url='$image_url' WHERE id=$id");
+            } else {
+                $this->db->query("INSERT INTO trips (title, description, duration, price, image_url) VALUES ('$title', '$description', '$duration', '$price', '$image_url')");
+            }
+            $this->redirect('/admin/trips');
+        }
+    }
+
+    public function deleteTrip() {
+        if (isset($_GET['id'])) {
+            $id = (int) $_GET['id'];
+            $this->db->query("DELETE FROM trips WHERE id=$id");
+            $this->redirect('/admin/trips');
+        }
+    }
+
+    // --- Site Settings ---
+    public function siteSettings() {
+        $data['settings'] = [];
+        $res = $this->db->query("SELECT * FROM site_settings");
+        while ($row = $res->fetch_assoc()) {
+            $data['settings'][$row['page_key']] = $row;
+        }
+        $this->view('admin/site_settings', $data);
+    }
+
+    public function saveSiteSetting() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $page_key = $this->db->real_escape_string($_POST['page_key']);
+            $title = $this->db->real_escape_string($_POST['title']);
+            $content = $this->db->real_escape_string($_POST['content']);
+            $image_url = $this->db->real_escape_string($_POST['image_url']);
+
+            $existing = $this->db->query("SELECT id FROM site_settings WHERE page_key='$page_key'");
+            if ($existing->num_rows > 0) {
+                $this->db->query("UPDATE site_settings SET title='$title', content='$content', image_url='$image_url' WHERE page_key='$page_key'");
+            } else {
+                $this->db->query("INSERT INTO site_settings (page_key, title, content, image_url) VALUES ('$page_key', '$title', '$content', '$image_url')");
+            }
+            $this->redirect('/admin/site-settings');
+        }
+    }
+
+    // --- Restaurant Management ---
+    public function restaurantManage() {
+        $data['menu'] = $this->db->query("SELECT * FROM menu_items ORDER BY category");
+        $data['orders'] = $this->db->query("SELECT o.*, u.fullname FROM restaurant_orders o JOIN users u ON o.user_id = u.id ORDER BY o.order_date DESC");
+        $data['edit_menu'] = null;
+        if (isset($_GET['edit_menu'])) {
+            $id = (int) $_GET['edit_menu'];
+            $data['edit_menu'] = $this->db->query("SELECT * FROM menu_items WHERE id = $id")->fetch_assoc();
+        }
+        $this->view('admin/restaurant_manage', $data);
+    }
+
+    public function saveMenuItem() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $this->db->real_escape_string($_POST['name']);
+            $cat = $this->db->real_escape_string($_POST['category']);
+            $price = $_POST['price'];
+            $desc = $this->db->real_escape_string($_POST['description']);
+            $url = $this->db->real_escape_string($_POST['image_url']);
+
+            if (isset($_POST['menu_id']) && !empty($_POST['menu_id'])) {
+                $id = (int) $_POST['menu_id'];
+                $this->db->query("UPDATE menu_items SET name='$name', category='$cat', price='$price', description='$desc', image_url='$url' WHERE id=$id");
+            } else {
+                $this->db->query("INSERT INTO menu_items (name, category, price, description, image_url) VALUES ('$name', '$cat', '$price', '$desc', '$url')");
+            }
+            $this->redirect('/admin/restaurant');
+        }
+    }
+
+    public function updateOrderStatus() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'])) {
+            $oid = (int) $_POST['order_id'];
+            $status = $this->db->real_escape_string($_POST['status']);
+            $this->db->query("UPDATE restaurant_orders SET status='$status' WHERE id=$oid");
+            $this->redirect('/admin/restaurant');
+        }
+    }
 }

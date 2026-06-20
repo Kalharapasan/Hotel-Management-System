@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Database;
 use App\Models\Hotel;
 
 class HomeController extends Controller {
@@ -14,8 +15,8 @@ class HomeController extends Controller {
         $location = $_GET['location'] ?? '';
         
         $query = "SELECT * FROM hotels WHERE 1=1";
-        if (!empty($search)) $query .= " AND name LIKE '%$search%'";
-        if (!empty($location)) $query .= " AND location LIKE '%$location%'";
+        if (!empty($search)) $query .= " AND name LIKE '%" . $db->real_escape_string($search) . "%'";
+        if (!empty($location)) $query .= " AND location LIKE '%" . $db->real_escape_string($location) . "%'";
         $query .= " ORDER BY created_at DESC";
         
         $hotels = $db->query($query);
@@ -25,7 +26,7 @@ class HomeController extends Controller {
             'hotels' => $hotels,
             'categories' => $model->getCategories(),
             'gallery' => $model->getGallery(),
-            'employees' => $this->db->query("SELECT * FROM employees WHERE status='active' LIMIT 4")
+            'employees' => $db->query("SELECT * FROM employees WHERE status='active' LIMIT 4")
         ];
         $this->view('home', $data);
     }
