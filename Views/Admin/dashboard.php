@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css">
 </head>
 <body>
     <nav class="navbar admin-nav">
         <div class="container">
             <div class="logo">🏨 Admin Panel</div>
             <ul class="nav-links">
-                <li><a href="/admin" class="active">Dashboard</a></li>
-                <li><a href="/admin/hotels">Hotels</a></li>
-                <li><a href="/admin/rooms">Rooms</a></li>
-                <li><a href="/admin/categories">Categories</a></li>
-                <li><a href="/admin/customers">Customers</a></li>
-                <li><a href="/admin/employees">Employees</a></li>
-                <li><a href="/admin/bookings">Bookings</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin" class="active">Dashboard</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/hotels">Hotels</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/rooms">Rooms</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/categories">Categories</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/customers">Customers</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/employees">Employees</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/bookings">Bookings</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/logout">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -69,12 +69,12 @@
         <div class="dashboard-section">
             <h2>Management Options</h2>
             <div class="admin-links">
-                <a href="/admin/hotels" class="btn btn-primary">Manage Hotels</a>
-                <a href="/admin/rooms" class="btn btn-primary">Manage Rooms</a>
-                <a href="/admin/customers" class="btn btn-primary">Manage Customers</a>
-                <a href="/admin/employees" class="btn btn-primary">Manage Employees</a>
-                <a href="/admin/bookings" class="btn btn-primary">View Bookings</a>
-                <a href="/admin/billing" class="btn btn-primary">View Payments</a>
+                <a href="<?php echo BASE_URL; ?>/admin/hotels" class="btn btn-primary">Manage Hotels</a>
+                <a href="<?php echo BASE_URL; ?>/admin/rooms" class="btn btn-primary">Manage Rooms</a>
+                <a href="<?php echo BASE_URL; ?>/admin/customers" class="btn btn-primary">Manage Customers</a>
+                <a href="<?php echo BASE_URL; ?>/admin/employees" class="btn btn-primary">Manage Employees</a>
+                <a href="<?php echo BASE_URL; ?>/admin/bookings" class="btn btn-primary">View Bookings</a>
+                <a href="<?php echo BASE_URL; ?>/admin/billing" class="btn btn-primary">View Payments</a>
             </div>
         </div>
     </div>

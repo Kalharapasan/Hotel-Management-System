@@ -1,6 +1,19 @@
 <?php
 session_start();
 
+define('BASE_URL', rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/'));
+
+
+function asset($path) {
+    if (empty($path)) {
+        return '';
+    }
+    if (preg_match('#^(https?:)?//#i', $path)) {
+        return $path;
+    }
+    return BASE_URL . '/' . ltrim($path, '/');
+}
+
 // Autoloader for App namespace
 spl_autoload_register(function ($class) {
     $prefix = 'App\\';

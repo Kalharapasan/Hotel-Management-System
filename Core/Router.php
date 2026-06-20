@@ -13,7 +13,15 @@ class Router {
     }
     
     public function handle($method, $uri) {
-        $uri = '/' . trim(explode('?', $uri)[0], '/');
+        $uri = explode('?', $uri)[0];
+
+        // Strip the app's base path so routing works the same whether the
+        // app sits at the domain root or inside a subfolder (e.g. /Hotel-Management-System).
+        if (defined('BASE_URL') && BASE_URL !== '' && strpos($uri, BASE_URL) === 0) {
+            $uri = substr($uri, strlen(BASE_URL));
+        }
+
+        $uri = '/' . trim($uri, '/');
         
         foreach ($this->routes as $route) {
             if ($route['method'] === $method && $route['uri'] === $uri) {

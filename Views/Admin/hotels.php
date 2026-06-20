@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Hotels</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css">
 </head>
 <body>
     <nav class="navbar admin-nav">
         <div class="container">
             <div class="logo">🏨 Admin Panel</div>
             <ul class="nav-links">
-                <li><a href="/admin">Dashboard</a></li>
-                <li><a href="/admin/hotels" class="active">Hotels</a></li>
-                <li><a href="/admin/rooms">Rooms</a></li>
-                <li><a href="/admin/customers">Customers</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin">Dashboard</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/hotels" class="active">Hotels</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/rooms">Rooms</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/admin/customers">Customers</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/logout">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -27,7 +27,7 @@
 
         <div id="hotelForm" style="display: none;" class="admin-form">
             <h2>Add/Edit Hotel</h2>
-            <form method="POST" action="/admin/save-hotel" enctype="multipart/form-data">
+            <form method="POST" action="<?php echo BASE_URL; ?>/admin/save-hotel" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Hotel Name:</label>
                     <input type="text" name="name" required>
@@ -82,8 +82,8 @@
                             <td><?php echo htmlspecialchars($hotel['location']); ?></td>
                             <td>$<?php echo number_format($hotel['price_per_night'], 2); ?></td>
                             <td>
-                                <a href="/admin/hotels?edit=<?php echo intval($hotel['id']); ?>" class="btn btn-sm btn-info">Edit</a>
-                                <a href="/admin/delete-hotel?id=<?php echo intval($hotel['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this hotel?');">Delete</a>
+                                <a href="<?php echo BASE_URL; ?>/admin/hotels?edit=<?php echo intval($hotel['id']); ?>" class="btn btn-sm btn-info">Edit</a>
+                                <a href="<?php echo BASE_URL; ?>/admin/delete-hotel?id=<?php echo intval($hotel['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Delete this hotel?');">Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>

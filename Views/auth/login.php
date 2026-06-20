@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Hotel Management System</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css">
 </head>
 <body>
     <div class="auth-container">
@@ -17,7 +17,7 @@
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="/login">
+            <form method="POST" action="<?php echo BASE_URL; ?>/login">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
@@ -31,7 +31,7 @@
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
 
-            <p>Don't have an account? <a href="/register">Register here</a></p>
+            <p>Don't have an account? <a href="<?php echo BASE_URL; ?>/register">Register here</a></p>
         </div>
     </div>
 </body>

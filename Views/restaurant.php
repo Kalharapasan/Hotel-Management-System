@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant - Hotel Management System</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="logo">🏨 Hotel Management</div>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/rooms">Rooms</a></li>
-                <li><a href="/restaurant" class="active">Restaurant</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/">Home</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/rooms">Rooms</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/restaurant" class="active">Restaurant</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/about">About</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/contact">Contact</a></li>
                 <?php if(isset($_SESSION['user_id'])): ?>
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/profile">Profile</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/logout">Logout</a></li>
                 <?php else: ?>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/login">Login</a></li>
                 <?php endif; ?>
             </ul>
         </div>
@@ -32,7 +32,7 @@
 
             <?php if(!$user_logged_in): ?>
                 <div class="alert alert-info">
-                    Please <a href="/login">login</a> to place an order.
+                    Please <a href="<?php echo BASE_URL; ?>/login">login</a> to place an order.
                 </div>
             <?php endif; ?>
 
@@ -40,14 +40,14 @@
                 <?php if(isset($menu_items)): ?>
                     <?php while($item = $menu_items->fetch_assoc()): ?>
                         <div class="menu-card">
-                            <img src="<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>">
+                            <img src="<?php echo htmlspecialchars(asset($item['image_url'])); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>">
                             <h3><?php echo htmlspecialchars($item['name']); ?></h3>
                             <p><strong>Category:</strong> <?php echo htmlspecialchars($item['category']); ?></p>
                             <p><?php echo htmlspecialchars($item['description']); ?></p>
                             <p class="price">$<?php echo number_format($item['price'], 2); ?></p>
                             
                             <?php if($user_logged_in): ?>
-                                <form method="POST" action="/restaurant/order">
+                                <form method="POST" action="<?php echo BASE_URL; ?>/restaurant/order">
                                     <input type="hidden" name="item_id" value="<?php echo intval($item['id']); ?>">
                                     <input type="number" name="quantity" value="1" min="1" max="10">
                                     <button type="submit" class="btn btn-primary">Order</button>

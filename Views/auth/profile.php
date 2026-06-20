@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Hotel Management System</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="logo">🏨 Hotel Management</div>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/profile" class="active">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/">Home</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/profile" class="active">Profile</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/logout">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -30,7 +30,7 @@
 
             <div class="profile-card">
                 <?php if(isset($user)): ?>
-                    <form method="POST" action="/profile/update">
+                    <form method="POST" action="<?php echo BASE_URL; ?>/profile/update">
                         <div class="form-group">
                             <label for="fullname">Full Name:</label>
                             <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($user['fullname']); ?>" required>
@@ -47,7 +47,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Update Profile</button>
-                        <a href="/" class="btn btn-secondary">Back to Home</a>
+                        <a href="<?php echo BASE_URL; ?>/" class="btn btn-secondary">Back to Home</a>
                     </form>
                 <?php endif; ?>
             </div>

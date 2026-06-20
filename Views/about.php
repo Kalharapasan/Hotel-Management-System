@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Hotel Management System</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="logo">🏨 Hotel Management</div>
             <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/rooms">Rooms</a></li>
-                <li><a href="/restaurant">Restaurant</a></li>
-                <li><a href="/about" class="active">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/">Home</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/rooms">Rooms</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/restaurant">Restaurant</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/about" class="active">About</a></li>
+                <li><a href="<?php echo BASE_URL; ?>/contact">Contact</a></li>
                 <?php if(isset($_SESSION['user_id'])): ?>
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/profile">Profile</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/logout">Logout</a></li>
                 <?php else: ?>
-                    <li><a href="/login">Login</a></li>
+                    <li><a href="<?php echo BASE_URL; ?>/login">Login</a></li>
                 <?php endif; ?>
             </ul>
         </div>
