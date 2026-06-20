@@ -12,10 +12,10 @@
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div class="p-6"><span class="text-2xl font-bold text-indigo-400">LuxeStay Admin</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Dashboard</a>
-            <a href="/admin/categories" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Room Categories</a>
-            <a href="/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Hotels</a>
-            <a href="/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Rooms</a>
+            <a href="<?php echo BASE_URL; ?>/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>/admin/categories" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Room Categories</a>
+            <a href="<?php echo BASE_URL; ?>/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Hotels</a>
+            <a href="<?php echo BASE_URL; ?>/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Rooms</a>
         </nav>
     </aside>
 
@@ -25,7 +25,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm h-fit">
                 <h2 class="text-xl font-bold text-slate-900 mb-6">Add / Edit Category</h2>
-                <form action="/admin/save-category" method="POST" class="space-y-4">
+                <form action="<?php echo BASE_URL; ?>/admin/save-category" method="POST" class="space-y-4">
                     <input type="hidden" id="category_id" name="category_id">
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-1">Category Name</label>
@@ -58,7 +58,7 @@
                             <td class="px-6 py-4 text-slate-500 text-sm"><?php echo $cat['description']; ?></td>
                             <td class="px-6 py-4 text-right">
                                 <button onclick='editCategory(<?php echo json_encode($cat); ?>)' class="text-indigo-600 hover:text-indigo-800 font-bold mr-4">Edit</button>
-                                <a href="/admin/delete-category?id=<?php echo $cat['id']; ?>" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700 font-bold">Delete</a>
+                                <a href="<?php echo BASE_URL; ?>/admin/delete-category?id=<?php echo $cat['id']; ?>" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700 font-bold">Delete</a>
                             </td>
                         </tr>
                         <?php endwhile; ?>

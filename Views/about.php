@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | LuxeStay</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>body { font-family: 'Outfit', sans-serif; }</style>
 </head>
 <body class="bg-slate-50">
     <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 py-4 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-indigo-600">LuxeStay</a>
+            <a href="<?php echo BASE_URL; ?>/" class="text-2xl font-bold text-indigo-600">LuxeStay</a>
             <div class="flex gap-8 items-center">
-                <a href="/" class="text-slate-600 font-medium">Home</a>
-                <a href="/rooms" class="text-slate-600 font-medium">Rooms</a>
-                <a href="/about" class="text-indigo-600 font-bold">About</a>
-                <a href="/contact" class="text-slate-600 font-medium">Contact</a>
+                <a href="<?php echo BASE_URL; ?>/" class="text-slate-600 font-medium">Home</a>
+                <a href="<?php echo BASE_URL; ?>/rooms" class="text-slate-600 font-medium">Rooms</a>
+                <a href="<?php echo BASE_URL; ?>/about" class="text-indigo-600 font-bold">About</a>
+                <a href="<?php echo BASE_URL; ?>/contact" class="text-slate-600 font-medium">Contact</a>
             </div>
         </div>
     </nav>
@@ -60,6 +60,6 @@
         </div>
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script src="<?php echo BASE_URL; ?>/js/main.js"></script>
 </body>
 </html>

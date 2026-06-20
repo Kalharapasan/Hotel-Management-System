@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LuxeStay | MVC Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Outfit', sans-serif; }
@@ -19,13 +19,13 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center"><span class="text-2xl font-bold text-indigo-600">LuxeStay</span></div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="/" class="text-indigo-600 font-bold">Hotels</a>
-                    <a href="/trips" class="text-gray-700 hover:text-indigo-600">Trips</a>
-                    <a href="/flights" class="text-gray-700 hover:text-indigo-600">Flights</a>
-                    <a href="/restaurant" class="text-gray-700 hover:text-indigo-600">Restaurant</a>
-                    <a href="/about" class="text-gray-700 hover:text-indigo-600">About</a>
-                    <a href="/contact" class="text-gray-700 hover:text-indigo-600">Contact</a>
-                    <a href="/admin" class="bg-indigo-600 text-white px-5 py-2 rounded-full shadow-lg">Admin</a>
+                    <a href="<?php echo BASE_URL; ?>/" class="text-indigo-600 font-bold">Hotels</a>
+                    <a href="<?php echo BASE_URL; ?>/trips" class="text-gray-700 hover:text-indigo-600">Trips</a>
+                    <a href="<?php echo BASE_URL; ?>/flights" class="text-gray-700 hover:text-indigo-600">Flights</a>
+                    <a href="<?php echo BASE_URL; ?>/restaurant" class="text-gray-700 hover:text-indigo-600">Restaurant</a>
+                    <a href="<?php echo BASE_URL; ?>/about" class="text-gray-700 hover:text-indigo-600">About</a>
+                    <a href="<?php echo BASE_URL; ?>/contact" class="text-gray-700 hover:text-indigo-600">Contact</a>
+                    <a href="<?php echo BASE_URL; ?>/admin" class="bg-indigo-600 text-white px-5 py-2 rounded-full shadow-lg">Admin</a>
                 </div>
             </div>
         </div>
@@ -33,18 +33,18 @@
 
     <!-- Hero Section -->
     <header class="relative h-[600px] flex items-center justify-center overflow-hidden">
-        <img src="<?php echo $hero['image_url']; ?>" class="absolute inset-0 w-full h-full object-cover" alt="Hero">
+        <img src="<?php echo asset_url($hero['image_url'] ?? 'https://images.unsplash.com/photo-1566073771259-6a8506099945'); ?>" class="absolute inset-0 w-full h-full object-cover" alt="Hero">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative text-center text-white px-4 max-w-4xl">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6"><?php echo $hero['title']; ?></h1>
-            <p class="text-xl md:text-2xl opacity-90 mb-10"><?php echo $hero['content']; ?></p>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6"><?php echo $hero['title'] ?? 'Discover Luxury, Redefined.'; ?></h1>
+            <p class="text-xl md:text-2xl opacity-90 mb-10"><?php echo $hero['content'] ?? 'Book the finest hotels, flights, and trips - all in one seamless experience.'; ?></p>
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <a href="#hotels" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold shadow-xl">Browse Hotels</a>
             </div>
 
             <!-- Search Bar -->
             <div class="bg-white/10 backdrop-blur-xl p-4 rounded-[32px] border border-white/20 shadow-2xl max-w-3xl mx-auto">
-                <form action="/" method="GET" class="flex flex-col md:flex-row gap-4">
+                <form action="<?php echo BASE_URL; ?>/" method="GET" class="flex flex-col md:flex-row gap-4">
                     <div class="flex-1 relative">
                         <input type="text" name="search" placeholder="Search hotels..." value="<?php echo $_GET['search'] ?? ''; ?>"
                                class="w-full bg-white/20 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder-white/60 outline-none focus:bg-white/30 transition">
@@ -86,7 +86,7 @@
             <?php while($hotel = $hotels->fetch_assoc()): ?>
             <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-slate-100 group">
                 <div class="relative h-64 overflow-hidden">
-                    <img src="<?php echo $hotel['image_url']; ?>" alt="" class="w-full h-full object-cover group-hover:scale-110 transition">
+                    <img src="<?php echo asset_url($hotel['image_url']); ?>" alt="" class="w-full h-full object-cover group-hover:scale-110 transition">
                     <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-indigo-600">
                         $<?php echo number_format($hotel['price_per_night']); ?> / night
                     </div>
@@ -107,7 +107,7 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <?php while($img = $gallery->fetch_assoc()): ?>
                 <div class="aspect-square rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition group">
-                    <img src="<?php echo $img['image_url']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
+                    <img src="<?php echo asset_url($img['image_url']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
                 </div>
                 <?php endwhile; ?>
             </div>
@@ -158,6 +158,6 @@
         </div>
 
     </main>
-    <script src="/js/main.js"></script>
+    <script src="<?php echo BASE_URL; ?>/js/main.js"></script>
 </body>
 </html>

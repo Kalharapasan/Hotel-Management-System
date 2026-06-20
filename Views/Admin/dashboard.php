@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | LuxeStay Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL; ?>/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>body { font-family: 'Outfit', sans-serif; }</style>
 </head>
@@ -14,21 +14,21 @@
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden lg:flex">
         <div class="p-8"><span class="text-2xl font-bold text-indigo-400">LuxeStay</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="/admin" class="flex items-center px-4 py-3 bg-indigo-600 rounded-2xl">Dashboard</a>
-            <a href="/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Hotels</a>
-            <a href="/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Rooms</a>
-            <a href="/admin/categories" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Categories</a>
-            <a href="/admin/customers" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Customers</a>
-            <a href="/admin/employees" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Employees</a>
-            <a href="/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Flights</a>
-            <a href="/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Trips</a>
-            <a href="/admin/restaurant" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Restaurant</a>
-            <a href="/admin/bookings" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Bookings</a>
-            <a href="/admin/billing" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Billing</a>
-            <a href="/admin/site-settings" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Site Settings</a>
+            <a href="<?php echo BASE_URL; ?>/admin" class="flex items-center px-4 py-3 bg-indigo-600 rounded-2xl">Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Hotels</a>
+            <a href="<?php echo BASE_URL; ?>/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Rooms</a>
+            <a href="<?php echo BASE_URL; ?>/admin/categories" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Categories</a>
+            <a href="<?php echo BASE_URL; ?>/admin/customers" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Customers</a>
+            <a href="<?php echo BASE_URL; ?>/admin/employees" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Employees</a>
+            <a href="<?php echo BASE_URL; ?>/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Flights</a>
+            <a href="<?php echo BASE_URL; ?>/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Trips</a>
+            <a href="<?php echo BASE_URL; ?>/admin/restaurant" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Restaurant</a>
+            <a href="<?php echo BASE_URL; ?>/admin/bookings" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Bookings</a>
+            <a href="<?php echo BASE_URL; ?>/admin/billing" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Billing</a>
+            <a href="<?php echo BASE_URL; ?>/admin/site-settings" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-2xl transition">Site Settings</a>
         </nav>
         <div class="p-4 border-t border-slate-800">
-            <a href="/logout" class="flex items-center px-4 py-3 text-red-400 hover:bg-red-500/10 rounded-2xl transition">Logout</a>
+            <a href="<?php echo BASE_URL; ?>/logout" class="flex items-center px-4 py-3 text-red-400 hover:bg-red-500/10 rounded-2xl transition">Logout</a>
         </div>
     </aside>
 
@@ -40,7 +40,7 @@
                 <p class="text-slate-500 mt-1">Welcome back, Admin. Here's what's happening today.</p>
             </div>
             <div class="flex gap-4">
-                <a href="/" target="_blank" class="px-6 py-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-600 hover:bg-slate-50 transition">View Website</a>
+                <a href="<?php echo BASE_URL; ?>/" target="_blank" class="px-6 py-3 bg-white border border-slate-200 rounded-xl font-bold text-slate-600 hover:bg-slate-50 transition">View Website</a>
             </div>
         </div>
 

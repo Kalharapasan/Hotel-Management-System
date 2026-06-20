@@ -11,10 +11,10 @@
 <body class="bg-slate-50">
     <nav class="bg-white border-b border-slate-100 py-4">
         <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-indigo-600">LuxeStay</a>
+            <a href="<?php echo BASE_URL; ?>/" class="text-2xl font-bold text-indigo-600">LuxeStay</a>
             <div class="flex items-center gap-6">
-                <a href="/" class="text-slate-600 hover:text-indigo-600 font-medium">Home</a>
-                <a href="/logout" class="text-red-500 font-bold">Logout</a>
+                <a href="<?php echo BASE_URL; ?>/" class="text-slate-600 hover:text-indigo-600 font-medium">Home</a>
+                <a href="<?php echo BASE_URL; ?>/logout" class="text-red-500 font-bold">Logout</a>
             </div>
         </div>
     </nav>
@@ -29,7 +29,7 @@
                 </div>
             <?php endif; ?>
 
-            <form action="/profile/update" method="POST" class="space-y-6">
+            <form action="<?php echo BASE_URL; ?>/profile/update" method="POST" class="space-y-6">
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
                     <input type="text" name="fullname" value="<?php echo $user['fullname']; ?>" required 

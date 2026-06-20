@@ -68,7 +68,7 @@
             <div class="text-4xl font-black text-indigo-600">$<?php echo number_format($total, 2); ?></div>
         </div>
 
-        <form action="/admin/checkout" method="POST" class="flex gap-4">
+        <form action="<?php echo BASE_URL; ?>/admin/checkout" method="POST" class="flex gap-4">
             <input type="hidden" name="booking_id" value="<?php echo $booking['id']; ?>">
             <input type="hidden" name="user_id" value="<?php echo $booking['user_id']; ?>">
             <input type="hidden" name="total_amount" value="<?php echo $total; ?>">

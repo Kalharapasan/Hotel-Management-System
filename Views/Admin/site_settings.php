@@ -12,13 +12,13 @@
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div class="p-6"><span class="text-2xl font-bold text-indigo-400">LuxeStay Admin</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Dashboard</a>
-            <a href="/admin/site-settings" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Site Settings</a>
-            <a href="/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Hotels</a>
-            <a href="/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Rooms</a>
-            <a href="/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Flights</a>
-            <a href="/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Trips</a>
-            <a href="/admin/billing" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Billing</a>
+            <a href="<?php echo BASE_URL; ?>/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>/admin/site-settings" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Site Settings</a>
+            <a href="<?php echo BASE_URL; ?>/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Hotels</a>
+            <a href="<?php echo BASE_URL; ?>/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Rooms</a>
+            <a href="<?php echo BASE_URL; ?>/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Flights</a>
+            <a href="<?php echo BASE_URL; ?>/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Trips</a>
+            <a href="<?php echo BASE_URL; ?>/admin/billing" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl">Billing</a>
         </nav>
     </aside>
 
@@ -31,7 +31,7 @@
             <?php foreach(['home_hero', 'about', 'contact'] as $key): ?>
             <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
                 <h2 class="text-xl font-bold text-slate-900 mb-6 uppercase"><?php echo str_replace('_', ' ', $key); ?> Section</h2>
-                <form action="/admin/save-site-setting" method="POST" class="space-y-4">
+                <form action="<?php echo BASE_URL; ?>/admin/save-site-setting" method="POST" class="space-y-4">
                     <input type="hidden" name="page_key" value="<?php echo $key; ?>">
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-1">Title</label>

@@ -15,7 +15,7 @@
             <p class="text-slate-500 font-medium">Join our premium community</p>
         </div>
 
-        <form action="/register" method="POST" class="space-y-6">
+        <form action="<?php echo BASE_URL; ?>/register" method="POST" class="space-y-6">
             <div>
                 <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
                 <input type="text" name="fullname" required placeholder="John Doe" 
@@ -37,7 +37,7 @@
         </form>
 
         <p class="text-center mt-8 text-slate-600">
-            Already have an account? <a href="/login" class="text-indigo-600 font-bold hover:underline">Login here</a>
+            Already have an account? <a href="<?php echo BASE_URL; ?>/login" class="text-indigo-600 font-bold hover:underline">Login here</a>
         </p>
     </div>
 </body>

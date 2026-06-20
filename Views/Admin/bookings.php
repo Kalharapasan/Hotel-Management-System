@@ -12,11 +12,11 @@
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div class="p-6"><span class="text-2xl font-bold text-indigo-400">LuxeStay Admin</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
-            <a href="/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Hotels</a>
-            <a href="/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Flights</a>
-            <a href="/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Trips</a>
-            <a href="/admin/bookings" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Bookings</a>
+            <a href="<?php echo BASE_URL; ?>/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Hotels</a>
+            <a href="<?php echo BASE_URL; ?>/admin/flights" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Flights</a>
+            <a href="<?php echo BASE_URL; ?>/admin/trips" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Trips</a>
+            <a href="<?php echo BASE_URL; ?>/admin/bookings" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Bookings</a>
         </nav>
     </aside>
 
@@ -58,7 +58,7 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             <?php if($booking['status'] == 'pending'): ?>
-                                <a href="/admin/bill?booking_id=<?php echo $booking['id']; ?>" class="text-indigo-600 hover:text-indigo-800 font-bold underline">Checkout & Bill</a>
+                                <a href="<?php echo BASE_URL; ?>/admin/bill?booking_id=<?php echo $booking['id']; ?>" class="text-indigo-600 hover:text-indigo-800 font-bold underline">Checkout & Bill</a>
                             <?php else: ?>
                                 <span class="text-slate-400 italic">Paid</span>
                             <?php endif; ?>

@@ -19,7 +19,7 @@
             <div class="bg-red-50 text-red-600 p-4 rounded-2xl mb-6 text-sm border border-red-100"><?php echo $error; ?></div>
         <?php endif; ?>
 
-        <form action="/login" method="POST" class="space-y-5">
+        <form action="<?php echo BASE_URL; ?>/login" method="POST" class="space-y-5">
             <div>
                 <label class="block text-sm font-semibold text-slate-700 mb-1">Email Address</label>
                 <input type="email" name="email" required class="w-full px-5 py-4 rounded-2xl border border-slate-200 bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
@@ -32,7 +32,7 @@
         </form>
 
         <p class="text-center text-slate-500 mt-8">
-            New here? <a href="/register" class="text-indigo-600 font-bold">Create Account</a>
+            New here? <a href="<?php echo BASE_URL; ?>/register" class="text-indigo-600 font-bold">Create Account</a>
         </p>
     </div>
 </body>

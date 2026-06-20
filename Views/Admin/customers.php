@@ -12,10 +12,10 @@
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div class="p-6"><span class="text-2xl font-bold text-indigo-400">LuxeStay Admin</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
-            <a href="/admin/customers" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Customers</a>
-            <a href="/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Hotels</a>
-            <a href="/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Rooms</a>
+            <a href="<?php echo BASE_URL; ?>/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>/admin/customers" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Customers</a>
+            <a href="<?php echo BASE_URL; ?>/admin/hotels" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Hotels</a>
+            <a href="<?php echo BASE_URL; ?>/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Rooms</a>
         </nav>
     </aside>
 
@@ -25,7 +25,7 @@
         <?php if($edit_customer): ?>
         <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm mb-8">
             <h2 class="text-xl font-bold text-slate-900 mb-6">Edit Customer</h2>
-            <form action="/admin/save-customer" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form action="<?php echo BASE_URL; ?>/admin/save-customer" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input type="hidden" name="user_id" value="<?php echo $edit_customer['id']; ?>">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-1">Full Name</label>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="md:col-span-2 flex gap-4">
                     <button type="submit" class="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold">Update Customer</button>
-                    <a href="/admin/customers" class="bg-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold">Cancel</a>
+                    <a href="<?php echo BASE_URL; ?>/admin/customers" class="bg-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold">Cancel</a>
                 </div>
             </form>
         </div>
@@ -58,8 +58,8 @@
                         <td class="px-6 py-4 font-semibold text-slate-900"><?php echo $user['fullname']; ?></td>
                         <td class="px-6 py-4 text-slate-500"><?php echo $user['email']; ?></td>
                         <td class="px-6 py-4 text-right">
-                            <a href="/admin/customers?edit=<?php echo $user['id']; ?>" class="text-indigo-600 hover:text-indigo-800 font-bold mr-4">Edit</a>
-                            <a href="/admin/delete-customer?id=<?php echo $user['id']; ?>" onclick="return confirm('Delete this user?')" class="text-red-500 hover:text-red-700 font-bold">Delete</a>
+                            <a href="<?php echo BASE_URL; ?>/admin/customers?edit=<?php echo $user['id']; ?>" class="text-indigo-600 hover:text-indigo-800 font-bold mr-4">Edit</a>
+                            <a href="<?php echo BASE_URL; ?>/admin/delete-customer?id=<?php echo $user['id']; ?>" onclick="return confirm('Delete this user?')" class="text-red-500 hover:text-red-700 font-bold">Delete</a>
                         </td>
                     </tr>
                     <?php endwhile; ?>

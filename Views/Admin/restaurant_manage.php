@@ -12,10 +12,10 @@
     <aside class="w-64 bg-slate-900 text-white flex flex-col hidden md:flex">
         <div class="p-6"><span class="text-2xl font-bold text-indigo-400">LuxeStay Admin</span></div>
         <nav class="flex-1 px-4 space-y-2">
-            <a href="/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
-            <a href="/admin/restaurant" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Restaurant</a>
-            <a href="/admin/employees" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Employees</a>
-            <a href="/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Rooms</a>
+            <a href="<?php echo BASE_URL; ?>/admin" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Dashboard</a>
+            <a href="<?php echo BASE_URL; ?>/admin/restaurant" class="flex items-center px-4 py-3 bg-indigo-600 rounded-xl">Restaurant</a>
+            <a href="<?php echo BASE_URL; ?>/admin/employees" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Employees</a>
+            <a href="<?php echo BASE_URL; ?>/admin/rooms" class="flex items-center px-4 py-3 hover:bg-slate-800 rounded-xl transition">Rooms</a>
         </nav>
     </aside>
 
@@ -28,7 +28,7 @@
             <!-- Menu Management -->
             <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
                 <h2 class="text-xl font-bold text-slate-900 mb-6">Manage Menu Items</h2>
-                <form action="/admin/save-menu-item" method="POST" class="space-y-4 mb-8">
+                <form action="<?php echo BASE_URL; ?>/admin/save-menu-item" method="POST" class="space-y-4 mb-8">
                     <input type="hidden" name="menu_id" value="<?php echo $edit_menu['id'] ?? ''; ?>">
                     <div class="grid grid-cols-2 gap-4">
                         <input type="text" name="name" value="<?php echo $edit_menu['name'] ?? ''; ?>" placeholder="Item Name" required class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
@@ -60,7 +60,7 @@
                                 </td>
                                 <td class="px-4 py-3 font-bold text-indigo-600">$<?php echo $m['price']; ?></td>
                                 <td class="px-4 py-3 text-right">
-                                    <a href="/admin/restaurant?edit_menu=<?php echo $m['id']; ?>" class="text-indigo-600 text-sm font-bold">Edit</a>
+                                    <a href="<?php echo BASE_URL; ?>/admin/restaurant?edit_menu=<?php echo $m['id']; ?>" class="text-indigo-600 text-sm font-bold">Edit</a>
                                 </td>
                             </tr>
                             <?php endwhile; ?>
@@ -80,7 +80,7 @@
                             <div class="text-sm text-indigo-600 font-bold">$<?php echo $o['total_amount']; ?></div>
                             <div class="text-xs text-slate-400"><?php echo $o['order_date']; ?></div>
                         </div>
-                        <form action="/admin/update-order-status" method="POST" class="flex gap-2">
+                        <form action="<?php echo BASE_URL; ?>/admin/update-order-status" method="POST" class="flex gap-2">
                             <input type="hidden" name="order_id" value="<?php echo $o['id']; ?>">
                             <select name="status" class="text-xs border rounded-lg px-2 py-1 outline-none">
                                 <option value="pending" <?php echo $o['status'] == 'pending' ? 'selected' : ''; ?>>Pending</option>
