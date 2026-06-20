@@ -1,3 +1,8 @@
+<?php
+require_once 'config/db.php';
+$conn = getDb();
+$flights = $conn->query("SELECT * FROM flights ORDER BY price ASC");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,10 +23,10 @@
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center"><span class="text-2xl font-bold text-indigo-600">LuxeStay</span></div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="<?php echo BASE_URL; ?>/" class="text-gray-700 hover:text-indigo-600 transition">Hotels</a>
-                    <a href="<?php echo BASE_URL; ?>/trips" class="text-gray-700 hover:text-indigo-600 transition">Trips</a>
-                    <a href="<?php echo BASE_URL; ?>/flights" class="text-indigo-600 font-bold transition">Flights</a>
-                    <a href="<?php echo BASE_URL; ?>/login" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">Admin Login</a>
+                    <a href="index.php" class="text-gray-700 hover:text-indigo-600 transition">Hotels</a>
+                    <a href="trips.php" class="text-gray-700 hover:text-indigo-600 transition">Trips</a>
+                    <a href="flights.php" class="text-indigo-600 font-bold transition">Flights</a>
+                    <a href="admin/login.php" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">Admin Login</a>
                 </div>
             </div>
         </div>

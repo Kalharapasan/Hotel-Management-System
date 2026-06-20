@@ -3,19 +3,69 @@
 namespace App\Models;
 
 class Hotel extends BaseModel {
-    public function getAll() {
-        return $this->db->query("SELECT * FROM hotels ORDER BY created_at DESC");
+    protected $table = 'hotels';
+
+    public function getAvailable() {
+        $result = $this->db->query("SELECT * FROM hotels ORDER BY id DESC");
+        return $result ? $result : null;
     }
 
-    public function getHero() {
-        return $this->db->query("SELECT * FROM site_settings WHERE page_key='home_hero'")->fetch_assoc();
+    public function create($name, $location, $description, $amenities, $price, $image_url = '', $booking_url = '') {
+        // Validate inputs
+        $name = $this->sanitizeString($name);
+        $location = $this->sanitizeString($location);
+        $description = $this->sanitizeString($description);
+        $amenities = $this->sanitizeString($amenities);
+        $price = $this->sanitizeFloat($price);
+        $image_url = $this->sanitizeString($image_url);
+        $booking_url = $this->sanitizeString($booking_url);
+
+        if (!$name || !$location || !$description || $price <= 0) {
+            return false;
+        }
+
+        $stmt = $this->db->prepare("INSERT INTO hotels (name, location, description, amenities, price_per_night, image_url, booking_url) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        
+        if (!$stmt) {
+            return false;
+        }
+
+        $stmt->bind_param("ssssdss", $name, $location, $description, $amenities, $price, $image_url, $booking_url);
+        $success = $stmt->execute();
+        $stmt->close();
+        
+        return $success;
     }
 
-    public function getCategories() {
-        return $this->db->query("SELECT * FROM room_categories");
-    }
+    public function update($id, $name, $location, $description, $amenities, $price, $image_url = '', $booking_url = '') {
+        if (!is_numeric($id) || $id < 1) {
+            return false;
+        }
 
-    public function getGallery() {
-        return $this->db->query("SELECT * FROM gallery LIMIT 6");
+        $id = intval($id);
+        $name = $this->sanitizeString($name);
+        $location = $this->sanitizeString($location);
+        $description = $this->sanitizeString($description);
+        $amenities = $this->sanitizeString($amenities);
+        $price = $this->sanitizeFloat($price);
+        $image_url = $this->sanitizeString($image_url);
+        $booking_url = $this->sanitizeString($booking_url);
+
+        if (!$name || !$location || !$description || $price <= 0) {
+            return false;
+        }
+
+        $stmt = $this->db->prepare("UPDATE hotels SET name = ?, location = ?, description = ?, amenities = ?, price_per_night = ?, image_url = ?, booking_url = ? WHERE id = ?");
+        
+        if (!$stmt) {
+            return false;
+        }
+
+        $stmt->bind_param("ssssdss", $name, $location, $description, $amenities, $price, $image_url, $booking_url);
+        $success = $stmt->execute();
+        $stmt->close();
+        
+        return $success;
     }
 }
+?>

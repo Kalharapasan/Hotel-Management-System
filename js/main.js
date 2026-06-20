@@ -1,43 +1,166 @@
-document.addEventListener("DOMContentLoaded", function () {
+// Hotel Management System - Main JavaScript
 
-    // 1. Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tooltips if needed
+    initializeTooltips();
+    
+    // Add event listeners
+    setupFormValidation();
+    setupDatePickers();
+});
 
-            const targetId = this.getAttribute("href");
-            const target = document.querySelector(targetId);
+/**
+ * Initialize tooltips
+ */
+function initializeTooltips() {
+    const tooltips = document.querySelectorAll('[data-tooltip]');
+    tooltips.forEach(element => {
+        element.addEventListener('hover', function() {
+            const tooltip = this.getAttribute('data-tooltip');
+            console.log(tooltip);
+        });
+    });
+}
 
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
+/**
+ * Setup form validation
+ */
+function setupFormValidation() {
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            if (!validateForm(this)) {
+                e.preventDefault();
             }
         });
     });
+}
 
-    // 2. Scroll Animation (simple)
-    const elements = document.querySelectorAll(".animate-on-scroll");
+/**
+ * Validate form
+ */
+function validateForm(form) {
+    const email = form.querySelector('input[type="email"]');
+    if (email) {
+        if (!isValidEmail(email.value)) {
+            alert('Please enter a valid email');
+            return false;
+        }
+    }
 
-    function showOnScroll() {
-        elements.forEach(function (el) {
-            const position = el.getBoundingClientRect().top;
+    const password = form.querySelector('input[type="password"]');
+    if (password) {
+        if (password.value.length < 6) {
+            alert('Password must be at least 6 characters');
+            return false;
+        }
+    }
 
-            if (position < window.innerHeight - 100) {
-                el.classList.add("animate-fade-in");
+    return true;
+}
+
+/**
+ * Validate email format
+ */
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+/**
+ * Setup date pickers
+ */
+function setupDatePickers() {
+    const dateInputs = document.querySelectorAll('input[type="date"]');
+    dateInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            if (this.name === 'check_out') {
+                const checkInInput = document.querySelector('input[name="check_in"]');
+                if (checkInInput && checkInInput.value >= this.value) {
+                    alert('Check-out date must be after check-in date');
+                    this.value = '';
+                }
             }
         });
+    });
+}
+
+/**
+ * Toggle element visibility
+ */
+function toggleElement(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.style.display = element.style.display === 'none' ? 'block' : 'none';
     }
+}
 
-    window.addEventListener("scroll", showOnScroll);
-    showOnScroll(); // run on load
-
-    // 3. Mobile Menu Toggle
-    const btn = document.getElementById("mobile-menu-btn");
-    const menu = document.getElementById("mobile-menu");
-
-    if (btn && menu) {
-        btn.addEventListener("click", function () {
-            menu.classList.toggle("hidden");
-        });
+/**
+ * Show loading indicator
+ */
+function showLoading() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.display = 'block';
     }
+}
 
-});
+/**
+ * Hide loading indicator
+ */
+function hideLoading() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.display = 'none';
+    }
+}
+
+/**
+ * Format currency
+ */
+function formatCurrency(amount) {
+    return '$' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+/**
+ * Calculate total price
+ */
+function calculateTotal(pricePerNight, nights) {
+    return pricePerNight * nights;
+}
+
+/**
+ * Confirm action
+ */
+function confirmAction(message) {
+    return confirm(message);
+}
+
+/**
+ * Alert user
+ */
+function alertUser(message, type = 'info') {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type}`;
+    alertDiv.innerHTML = message;
+    document.body.insertBefore(alertDiv, document.body.firstChild);
+    
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 5000);
+}
+
+/**
+ * Export functions to global scope
+ */
+window.Hotel = {
+    toggleElement,
+    showLoading,
+    hideLoading,
+    formatCurrency,
+    calculateTotal,
+    confirmAction,
+    alertUser,
+    validateForm,
+    isValidEmail
+};
