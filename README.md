@@ -106,4 +106,4 @@ The app computes a `BASE_URL` constant at runtime from the request path, so ever
 
 ## License
 
-For personal/educational use.
+[License](./LICENSE.md): Proprietary – Permission Required
