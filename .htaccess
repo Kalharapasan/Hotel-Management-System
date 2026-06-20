@@ -1,10 +1,4 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # Redirect all requests to index.php (front controller).
-    # No RewriteBase is set so this works whether the app is hosted at the
-    # domain root or inside a subfolder (e.g. /Hotel-Management-System/).
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]
-</IfModule>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

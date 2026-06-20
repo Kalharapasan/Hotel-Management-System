@@ -1,8 +1,3 @@
-<?php
-require_once 'config/db.php';
-$conn = getDb();
-$trips = $conn->query("SELECT * FROM trips ORDER BY created_at DESC");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +18,10 @@ $trips = $conn->query("SELECT * FROM trips ORDER BY created_at DESC");
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center"><span class="text-2xl font-bold text-indigo-600">LuxeStay</span></div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.php" class="text-gray-700 hover:text-indigo-600 transition">Hotels</a>
-                    <a href="trips.php" class="text-indigo-600 font-bold transition">Trips</a>
-                    <a href="flights.php" class="text-gray-700 hover:text-indigo-600 transition">Flights</a>
-                    <a href="admin/login.php" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">Admin Login</a>
+                    <a href="/" class="text-gray-700 hover:text-indigo-600 transition">Hotels</a>
+                    <a href="/trips" class="text-indigo-600 font-bold transition">Trips</a>
+                    <a href="/flights" class="text-gray-700 hover:text-indigo-600 transition">Flights</a>
+                    <a href="/login" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">Admin Login</a>
                 </div>
             </div>
         </div>
