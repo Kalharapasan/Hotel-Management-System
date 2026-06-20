@@ -85,9 +85,7 @@ $router->add('GET', '/flights', 'FlightController@index');
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
-// Strip the base path so the app works whether it lives at the
-// web server's document root (e.g. http://localhost/) or inside a
-// subfolder (e.g. http://localhost/Hotel-Management-System/).
+
 $scriptDir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
 if ($scriptDir !== '/' && strpos($uri, $scriptDir) === 0) {
     $uri = substr($uri, strlen($scriptDir));
