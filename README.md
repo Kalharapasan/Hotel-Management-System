@@ -1,4 +1,4 @@
-# LuxeStay — Hotel Management System
+# LuxeStay  Hotel Management System
 
 A PHP MVC web application for managing hotel bookings, rooms, flights, trips, a restaurant menu, and customers, with a full admin dashboard.
 
