@@ -36,8 +36,12 @@
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <input type="number" step="0.01" name="price" value="<?php echo $edit_menu['price'] ?? ''; ?>" placeholder="Price ($)" required class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
-                        <input type="text" name="image_url" value="<?php echo $edit_menu['image_url'] ?? ''; ?>" placeholder="Image URL" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="menu_image_url" name="image_url" value="<?php echo $edit_menu['image_url'] ?? ''; ?>" placeholder="Image URL" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
+                            <button type="button" onclick="openAssetPicker('menu_image_url','menu_image_preview')" class="whitespace-nowrap px-3 py-2 rounded-xl border border-indigo-200 text-indigo-600 font-semibold text-xs hover:bg-indigo-50 transition">Browse</button>
+                        </div>
                     </div>
+                    <img id="menu_image_preview" src="<?php echo !empty($edit_menu['image_url']) ? asset_url($edit_menu['image_url']) : ''; ?>" class="h-14 rounded-lg object-cover border border-slate-100 <?php echo empty($edit_menu['image_url']) ? 'hidden' : ''; ?>" alt="">
                     <textarea name="description" placeholder="Description" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none h-20"><?php echo $edit_menu['description'] ?? ''; ?></textarea>
                     <button type="submit" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold">Save Item</button>
                 </form>
@@ -98,5 +102,6 @@
             </div>
         </div>
     </main>
+    <?php include __DIR__ . '/partials/asset_picker.php'; ?>
 </body>
 </html>

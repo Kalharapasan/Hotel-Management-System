@@ -43,7 +43,11 @@
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-slate-700 mb-1">Image URL</label>
-                        <input type="text" name="image_url" value="<?php echo $settings[$key]['image_url'] ?? ''; ?>" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500">
+                        <div class="flex items-center gap-3">
+                            <input type="text" id="setting_image_<?php echo $key; ?>" name="image_url" value="<?php echo $settings[$key]['image_url'] ?? ''; ?>" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500">
+                            <button type="button" onclick="openAssetPicker('setting_image_<?php echo $key; ?>','setting_preview_<?php echo $key; ?>')" class="whitespace-nowrap px-4 py-2 rounded-xl border border-indigo-200 text-indigo-600 font-semibold text-sm hover:bg-indigo-50 transition">Browse</button>
+                        </div>
+                        <img id="setting_preview_<?php echo $key; ?>" src="<?php echo !empty($settings[$key]['image_url']) ? asset_url($settings[$key]['image_url']) : ''; ?>" class="mt-2 h-16 rounded-lg object-cover border border-slate-100 <?php echo empty($settings[$key]['image_url']) ? 'hidden' : ''; ?>" alt="">
                     </div>
                     <button type="submit" class="w-full bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-indigo-600 transition shadow-lg">Update <?php echo ucfirst($key); ?></button>
                 </form>
@@ -51,5 +55,6 @@
             <?php endforeach; ?>
         </div>
     </main>
+    <?php include __DIR__ . '/partials/asset_picker.php'; ?>
 </body>
 </html>

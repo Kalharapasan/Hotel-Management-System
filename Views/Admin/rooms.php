@@ -26,7 +26,7 @@
             <h2 class="text-xl font-bold text-slate-900 mb-6"><?php echo $edit_room ? 'Edit' : 'Add New'; ?> Room</h2>
             <form action="<?php echo BASE_URL; ?>/admin/save-room" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <input type="hidden" name="room_id" value="<?php echo $edit_room['id'] ?? ''; ?>">
-                <input type="hidden" name="existing_image" value="<?php echo $edit_room['image_url'] ?? ''; ?>">
+                <input type="hidden" id="room_existing_image" name="existing_image" value="<?php echo $edit_room['image_url'] ?? ''; ?>">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-1">Select Hotel</label>
                     <select name="hotel_id" required class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500">
@@ -64,7 +64,11 @@
                 </div>
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-1">Room Image</label>
-                    <input type="file" name="image" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
+                    <div class="flex items-center gap-3">
+                        <input type="file" name="image" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
+                        <button type="button" onclick="openAssetPicker('room_existing_image','room_image_preview')" class="whitespace-nowrap px-4 py-2 rounded-xl border border-indigo-200 text-indigo-600 font-semibold text-sm hover:bg-indigo-50 transition">Browse Assets</button>
+                    </div>
+                    <img id="room_image_preview" src="<?php echo !empty($edit_room['image_url']) ? asset_url($edit_room['image_url']) : ''; ?>" class="mt-2 h-16 rounded-lg object-cover border border-slate-100 <?php echo empty($edit_room['image_url']) ? 'hidden' : ''; ?>" alt="">
                     <?php if(!empty($edit_room['image_url'])): ?>
                         <div class="mt-2 text-xs text-slate-400 italic">Current: <?php echo basename($edit_room['image_url']); ?></div>
                     <?php endif; ?>
@@ -110,5 +114,6 @@
             </table>
         </div>
     </main>
+    <?php include __DIR__ . '/partials/asset_picker.php'; ?>
 </body>
 </html>
