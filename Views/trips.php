@@ -1,8 +1,3 @@
-<?php
-require_once 'config/db.php';
-$conn = getDb();
-$trips = $conn->query("SELECT * FROM trips ORDER BY created_at DESC");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +18,10 @@ $trips = $conn->query("SELECT * FROM trips ORDER BY created_at DESC");
             <div class="flex justify-between h-16 items-center">
                 <div class="flex items-center"><span class="text-2xl font-bold text-indigo-600">LuxeStay</span></div>
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.php" class="text-gray-700 hover:text-indigo-600 transition">Hotels</a>
-                    <a href="trips.php" class="text-indigo-600 font-bold transition">Trips</a>
-                    <a href="flights.php" class="text-gray-700 hover:text-indigo-600 transition">Flights</a>
-                    <a href="admin/login.php" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">Admin Login</a>
+                    <a href="<?php echo BASE_URL; ?>/" class="text-gray-700 hover:text-indigo-600 transition">Hotels</a>
+                    <a href="<?php echo BASE_URL; ?>/trips" class="text-indigo-600 font-bold transition">Trips</a>
+                    <a href="<?php echo BASE_URL; ?>/flights" class="text-gray-700 hover:text-indigo-600 transition">Flights</a>
+                    <a href="<?php echo BASE_URL; ?>/login" class="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition">Admin Login</a>
                 </div>
             </div>
         </div>
@@ -40,7 +35,7 @@ $trips = $conn->query("SELECT * FROM trips ORDER BY created_at DESC");
             <?php while($trip = $trips->fetch_assoc()): ?>
             <div class="group cursor-pointer">
                 <div class="relative h-80 rounded-3xl overflow-hidden mb-4">
-                    <img src="<?php echo $trip['image_url']; ?>" alt="<?php echo $trip['title']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <img src="<?php echo asset_url($trip['image_url']); ?>" alt="<?php echo $trip['title']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div class="absolute bottom-6 left-6 text-white">
                         <span class="bg-indigo-600 px-3 py-1 rounded-full text-xs font-bold mb-2 inline-block"><?php echo $trip['duration']; ?></span>
