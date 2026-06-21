@@ -8,18 +8,14 @@ $user = 'root';
 $pass = '';
 $dbname = 'hotel_management_db';
 
-// Create connection
 $conn = new mysqli($host, $user, $pass);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Set charset to utf8
 $conn->set_charset("utf8mb4");
 
-// Create database if not exists
 $sql = "CREATE DATABASE IF NOT EXISTS `$dbname`";
 if ($conn->query($sql) === TRUE) {
     $conn->select_db($dbname);
@@ -27,7 +23,6 @@ if ($conn->query($sql) === TRUE) {
     die("Error creating database: " . $conn->error);
 }
 
-// Create Tables
 $tables = [
     "admins" => "CREATE TABLE IF NOT EXISTS `admins` (
         `id` INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -173,7 +168,6 @@ $tables = [
     ) ENGINE=InnoDB"
 ];
 
-// Execute table creation queries
 foreach ($tables as $name => $sql) {
     if (!$conn->query($sql)) {
         error_log("Error creating table $name: " . $conn->error);
@@ -186,11 +180,11 @@ if ($checkAdmins && $checkAdmins->num_rows == 0) {
     $hashedPass = password_hash('admin123', PASSWORD_DEFAULT);
     $conn->query("INSERT INTO admins (username, password, email) VALUES ('admin', '$hashedPass', 'admin@hotel.com')");
     
-    // Hotels - Using local images
-    $conn->query("INSERT INTO hotels (name, location, amenities, price_per_night, image_url, booking_url) VALUES 
-        ('Grand Royal Hotel', 'Paris, France', 'Free WiFi, Pool, Spa, Gym', 250.00, '/assets/images/hotels/hotel1.svg', '#'),
-        ('Ocean View Resort', 'Bali, Indonesia', 'Beach Access, Pool, Breakfast', 150.00, '/assets/images/hotels/hotel2.svg', '#'),
-        ('Mountain Retreat', 'Swiss Alps', 'Skiing, Fireplace, Spa', 300.00, '/assets/images/hotels/hotel3.svg', '#')");
+    // Hotels with your provided images
+    $conn->query("INSERT INTO hotels (name, location, amenities, price_per_night, image_url) VALUES 
+        ('Grand Royal Hotel', 'Paris, France', 'Free WiFi, Pool, Spa, Gym', 250.00, '/assets/images/hotel-cover.jpg'),
+        ('Ocean View Resort', 'Bali, Indonesia', 'Beach Access, Pool, Breakfast', 150.00, '/assets/images/hotel-cover.jpg'),
+        ('Mountain Retreat', 'Swiss Alps', 'Skiing, Fireplace, Spa', 300.00, '/assets/images/hotel-cover.jpg')");
 
     // Flights
     $conn->query("INSERT INTO flights (airline, departure, arrival, price, departure_time) VALUES 
@@ -199,8 +193,8 @@ if ($checkAdmins && $checkAdmins->num_rows == 0) {
 
     // Trips
     $conn->query("INSERT INTO trips (title, description, duration, price, image_url) VALUES 
-        ('European Discovery', 'Visit London, Paris, and Rome in 10 days.', '10 Days', 1200.00, '/assets/images/gallery/beach.svg'),
-        ('Safari Adventure', 'Experience the wild in Kenya.', '7 Days', 2500.00, '/assets/images/gallery/pool.svg')");
+        ('European Discovery', 'Visit London, Paris, and Rome in 10 days.', '10 Days', 1200.00, '/assets/images/hotel-cover.jpg'),
+        ('Safari Adventure', 'Experience the wild in Kenya.', '7 Days', 2500.00, '/assets/images/hotel-cover.jpg')");
 
     // Users
     $conn->query("INSERT INTO users (fullname, email, password) VALUES ('John Doe', 'john@example.com', '".password_hash('password', PASSWORD_DEFAULT)."')");
@@ -211,26 +205,26 @@ if ($checkAdmins && $checkAdmins->num_rows == 0) {
         ('Family Room', 'Spacious rooms for the whole family.'),
         ('Couple Room', 'Romantic setting for two.')");
 
-    // Rooms - Using local images
+    // Rooms with your provided images
     $conn->query("INSERT INTO rooms (hotel_id, category_id, room_type, price_per_night, amenities, image_url) VALUES 
-        (1, 1, 'Standard Single', 120.00, 'Single Bed, WiFi', '/assets/images/rooms/room1.svg'),
-        (1, 2, 'Luxury Family Suite', 350.00, 'King Bed + 2 Twin, Balcony', '/assets/images/rooms/room2.svg'),
-        (2, 3, 'Ocean View Couple', 280.00, 'King Bed, Ocean View, Spa', '/assets/images/rooms/room2.svg'),
-        (3, 1, 'Mountain View Single', 150.00, 'Single Bed, Fireplace', '/assets/images/rooms/room1.svg')");
+        (1, 1, 'Standard Single', 120.00, 'Single Bed, WiFi', '/assets/images/room/room-1.jpg'),
+        (1, 2, 'Luxury Family Suite', 350.00, 'King Bed + 2 Twin, Balcony', '/assets/images/room/2.jpg'),
+        (2, 3, 'Ocean View Couple', 280.00, 'King Bed, Ocean View, Spa', '/assets/images/room/3.jpg'),
+        (3, 1, 'Mountain View Single', 150.00, 'Single Bed, Fireplace', '/assets/images/room/4.jpg')");
 
-    // Employees
+    // Employees with your provided avatars
     $conn->query("INSERT INTO employees (fullname, role, email, phone, salary, joined_at) VALUES 
         ('Jane Smith', 'Manager', 'jane@hotel.com', '123456789', 5000.00, '2023-01-15'),
         ('Mike Johnson', 'Chef', 'mike@hotel.com', '987654321', 4000.00, '2023-03-10')");
 
-    // Menu Items - Using local images
+    // Menu Items with your provided images
     $conn->query("INSERT INTO menu_items (name, category, price, description, image_url) VALUES 
         ('Grilled Salmon', 'Main Course', 25.00, 'Fresh Atlantic salmon with lemon butter.', '/assets/images/menu/salmon.svg'),
         ('Caesar Salad', 'Starters', 12.00, 'Classic Caesar with homemade croutons.', '/assets/images/menu/salad.svg'),
         ('Chocolate Cake', 'Desserts', 8.00, 'Rich chocolate cake with cream topping.', '/assets/images/menu/cake.svg'),
         ('Pasta Carbonara', 'Main Course', 18.00, 'Traditional Italian pasta with bacon and cream.', '/assets/images/menu/pasta.svg')");
 
-    // Gallery - Using local images
+    // Gallery with your provided images
     $conn->query("INSERT INTO gallery (image_url, title) VALUES 
         ('/assets/images/gallery/lobby.svg', 'Hotel Lobby'),
         ('/assets/images/gallery/pool.svg', 'Infinity Pool'),
