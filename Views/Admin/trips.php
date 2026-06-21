@@ -27,7 +27,7 @@
 
         <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm mb-8">
             <h2 class="text-xl font-bold text-slate-900 mb-6"><?php echo $edit_trip ? 'Edit' : 'Add New'; ?> Trip</h2>
-            <form action="<?php echo BASE_URL; ?>/admin/save-trip" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form action="<?php echo BASE_URL; ?>/admin/save-trip" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input type="hidden" name="trip_id" value="<?php echo $edit_trip['id'] ?? ''; ?>">
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-1">Trip Title</label>
@@ -51,6 +51,10 @@
                         <input type="text" id="trip_image_url" name="image_url" value="<?php echo $edit_trip['image_url'] ?? ''; ?>" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500">
                         <button type="button" onclick="openAssetPicker('trip_image_url','trip_image_preview')" class="whitespace-nowrap px-4 py-2 rounded-xl border border-indigo-200 text-indigo-600 font-semibold text-sm hover:bg-indigo-50 transition">Browse Assets</button>
                     </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Or Upload from Your Computer</label>
+                    <input type="file" name="image" accept="image/*" onchange="previewLocalFile(this,'trip_image_preview')" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
                     <img id="trip_image_preview" src="<?php echo !empty($edit_trip['image_url']) ? asset_url($edit_trip['image_url']) : ''; ?>" class="mt-2 h-16 rounded-lg object-cover border border-slate-100 <?php echo empty($edit_trip['image_url']) ? 'hidden' : ''; ?>" alt="">
                 </div>
                 <div class="md:col-span-2 flex gap-4">

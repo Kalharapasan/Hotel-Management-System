@@ -65,7 +65,7 @@
                 <div>
                     <label class="block text-sm font-semibold text-slate-700 mb-1">Room Image</label>
                     <div class="flex items-center gap-3">
-                        <input type="file" name="image" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
+                        <input type="file" name="image" onchange="previewLocalFile(this,'room_image_preview')" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
                         <button type="button" onclick="openAssetPicker('room_existing_image','room_image_preview')" class="whitespace-nowrap px-4 py-2 rounded-xl border border-indigo-200 text-indigo-600 font-semibold text-sm hover:bg-indigo-50 transition">Browse Assets</button>
                     </div>
                     <img id="room_image_preview" src="<?php echo !empty($edit_room['image_url']) ? asset_url($edit_room['image_url']) : ''; ?>" class="mt-2 h-16 rounded-lg object-cover border border-slate-100 <?php echo empty($edit_room['image_url']) ? 'hidden' : ''; ?>" alt="">

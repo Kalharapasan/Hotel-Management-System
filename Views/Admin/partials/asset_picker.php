@@ -105,6 +105,22 @@ function filterAssetPicker() {
     });
 }
 
+// Instantly preview an image chosen from the admin's own computer
+// (before the form is even submitted), via a <input type="file" onchange="previewLocalFile(this,'xxxPreview')">
+function previewLocalFile(fileInput, previewId) {
+    const file = fileInput.files && fileInput.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const preview = document.getElementById(previewId);
+        if (preview) {
+            preview.src = e.target.result;
+            preview.classList.remove('hidden');
+        }
+    };
+    reader.readAsDataURL(file);
+}
+
 // Close modal on backdrop click
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('assetPickerModal');

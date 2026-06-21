@@ -1,15 +1,6 @@
 <?php
 session_start();
-
-// BASE_URL: the folder this app is running from (e.g. '' at the domain
-// root, or '/Hotel-Management-System' if installed in a subfolder).
-// Used everywhere instead of hardcoded absolute paths so the app works
-// no matter where it's deployed.
 define('BASE_URL', rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/'));
-
-// Helper for rendering image/asset paths. Leaves full external URLs
-// (e.g. https://images.unsplash.com/...) untouched, but prefixes
-// locally-stored paths (e.g. /uploads/hotels/abc.jpg) with BASE_URL.
 function asset_url($path) {
     if (empty($path)) return $path;
     if (preg_match('#^(https?:)?//#i', $path)) return $path;
@@ -100,9 +91,6 @@ $router->add('GET', '/flights', 'FlightController@index');
 $method = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];
 
-// Strip the base path so the app works whether it lives at the
-// web server's document root (e.g. http://localhost/) or inside a
-// subfolder (e.g. http://localhost/Hotel-Management-System/).
 if (BASE_URL !== '' && strpos($uri, BASE_URL) === 0) {
     $uri = substr($uri, strlen(BASE_URL));
 }

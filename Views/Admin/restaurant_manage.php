@@ -28,7 +28,7 @@
             <!-- Menu Management -->
             <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
                 <h2 class="text-xl font-bold text-slate-900 mb-6">Manage Menu Items</h2>
-                <form action="<?php echo BASE_URL; ?>/admin/save-menu-item" method="POST" class="space-y-4 mb-8">
+                <form action="<?php echo BASE_URL; ?>/admin/save-menu-item" method="POST" enctype="multipart/form-data" class="space-y-4 mb-8">
                     <input type="hidden" name="menu_id" value="<?php echo $edit_menu['id'] ?? ''; ?>">
                     <div class="grid grid-cols-2 gap-4">
                         <input type="text" name="name" value="<?php echo $edit_menu['name'] ?? ''; ?>" placeholder="Item Name" required class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
@@ -40,6 +40,10 @@
                             <input type="text" id="menu_image_url" name="image_url" value="<?php echo $edit_menu['image_url'] ?? ''; ?>" placeholder="Image URL" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
                             <button type="button" onclick="openAssetPicker('menu_image_url','menu_image_preview')" class="whitespace-nowrap px-3 py-2 rounded-xl border border-indigo-200 text-indigo-600 font-semibold text-xs hover:bg-indigo-50 transition">Browse</button>
                         </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 mb-1">Or upload from your computer</label>
+                        <input type="file" name="image" accept="image/*" onchange="previewLocalFile(this,'menu_image_preview')" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none">
                     </div>
                     <img id="menu_image_preview" src="<?php echo !empty($edit_menu['image_url']) ? asset_url($edit_menu['image_url']) : ''; ?>" class="h-14 rounded-lg object-cover border border-slate-100 <?php echo empty($edit_menu['image_url']) ? 'hidden' : ''; ?>" alt="">
                     <textarea name="description" placeholder="Description" class="w-full px-4 py-2 rounded-xl border border-slate-200 outline-none h-20"><?php echo $edit_menu['description'] ?? ''; ?></textarea>

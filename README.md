@@ -275,7 +275,8 @@ For documentation and detailed guides, see:
 - `SUMMARY.md` - Technical summary
 
 ## 📄 License
-[License](./LICENSE.md): Proprietary – Permission Required
+
+This project is provided as-is for educational and commercial use.
 
 ## ✅ All Fixed Issues
 

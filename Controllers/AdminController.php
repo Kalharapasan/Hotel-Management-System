@@ -331,7 +331,11 @@ class AdminController extends Controller {
             $description = $this->db->real_escape_string($_POST['description']);
             $duration = $this->db->real_escape_string($_POST['duration']);
             $price = $_POST['price'];
-            $image_url = $this->db->real_escape_string($_POST['image_url']);
+
+            $image_url = $_POST['image_url'];
+            $new_image = $this->uploadFile($_FILES['image'] ?? null, 'trips');
+            if ($new_image) $image_url = $new_image;
+            $image_url = $this->db->real_escape_string($image_url);
 
             if (isset($_POST['trip_id']) && !empty($_POST['trip_id'])) {
                 $id = (int) $_POST['trip_id'];
@@ -366,7 +370,11 @@ class AdminController extends Controller {
             $page_key = $this->db->real_escape_string($_POST['page_key']);
             $title = $this->db->real_escape_string($_POST['title']);
             $content = $this->db->real_escape_string($_POST['content']);
-            $image_url = $this->db->real_escape_string($_POST['image_url']);
+
+            $image_url = $_POST['image_url'];
+            $new_image = $this->uploadFile($_FILES['image'] ?? null, 'site_settings');
+            if ($new_image) $image_url = $new_image;
+            $image_url = $this->db->real_escape_string($image_url);
 
             $existing = $this->db->query("SELECT id FROM site_settings WHERE page_key='$page_key'");
             if ($existing->num_rows > 0) {
@@ -396,7 +404,11 @@ class AdminController extends Controller {
             $cat = $this->db->real_escape_string($_POST['category']);
             $price = $_POST['price'];
             $desc = $this->db->real_escape_string($_POST['description']);
-            $url = $this->db->real_escape_string($_POST['image_url']);
+
+            $url = $_POST['image_url'];
+            $new_image = $this->uploadFile($_FILES['image'] ?? null, 'menu');
+            if ($new_image) $url = $new_image;
+            $url = $this->db->real_escape_string($url);
 
             if (isset($_POST['menu_id']) && !empty($_POST['menu_id'])) {
                 $id = (int) $_POST['menu_id'];
