@@ -1,0 +1,26 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="poolGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E90FF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="#FFD700"/>
+  <!-- Pool water -->
+  <ellipse cx="200" cy="180" rx="150" ry="80" fill="url(#poolGradient)" stroke="#0047AB" stroke-width="3"/>
+  <!-- Pool loungers -->
+  <ellipse cx="80" cy="240" rx="40" ry="30" fill="#FF4500" stroke="#FF6347" stroke-width="2"/>
+  <ellipse cx="320" cy="240" rx="40" ry="30" fill="#FF4500" stroke="#FF6347" stroke-width="2"/>
+  <!-- Umbrella -->
+  <circle cx="150" cy="120" r="35" fill="#FFB6C1" stroke="#FF69B4" stroke-width="2"/>
+  <rect x="148" y="155" width="4" height="60" fill="#8B4513"/>
+  <!-- Palm tree -->
+  <rect x="320" y="150" width="15" height="80" fill="#8B4513"/>
+  <path d="M 327 150 Q 310 140 300 145" fill="#228B22" stroke="#006400" stroke-width="1"/>
+  <path d="M 327 150 Q 345 140 355 145" fill="#228B22" stroke="#006400" stroke-width="1"/>
+  <!-- Wave lines -->
+  <path d="M 100 180 Q 120 175 140 180" stroke="#87CEEB" stroke-width="2" fill="none"/>
+  <path d="M 260 190 Q 280 185 300 190" stroke="#87CEEB" stroke-width="2" fill="none"/>
+  <!-- Text -->
+  <text x="200" y="285" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Infinity Pool</text>
+</svg>

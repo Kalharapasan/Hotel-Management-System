@@ -1,0 +1,19 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#FFFACD"/>
+  <!-- Bowl -->
+  <ellipse cx="200" cy="180" rx="100" ry="60" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <!-- Lettuce -->
+  <path d="M 120 180 Q 115 160 130 150" fill="#228B22" stroke="#006400" stroke-width="1"/>
+  <path d="M 280 180 Q 285 160 270 150" fill="#228B22" stroke="#006400" stroke-width="1"/>
+  <path d="M 150 190 Q 140 175 155 165" fill="#32CD32" stroke="#228B22" stroke-width="1"/>
+  <path d="M 250 190 Q 260 175 245 165" fill="#32CD32" stroke="#228B22" stroke-width="1"/>
+  <!-- Tomato slices -->
+  <circle cx="180" cy="175" r="15" fill="#FF6347" stroke="#DC143C" stroke-width="1"/>
+  <circle cx="220" cy="185" r="15" fill="#FF6347" stroke="#DC143C" stroke-width="1"/>
+  <!-- Croutons -->
+  <rect x="170" y="165" width="10" height="10" fill="#D2B48C" stroke="#8B7355" stroke-width="1"/>
+  <rect x="190" y="195" width="10" height="10" fill="#D2B48C" stroke="#8B7355" stroke-width="1"/>
+  <!-- Text -->
+  <text x="200" y="270" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Caesar Salad</text>
+  <text x="200" y="290" font-size="12" text-anchor="middle" fill="#666">$12.00</text>
+</svg>

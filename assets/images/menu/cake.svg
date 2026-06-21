@@ -1,0 +1,21 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#FFFACD"/>
+  <!-- Cake layers -->
+  <rect x="120" y="120" width="160" height="40" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <rect x="120" y="160" width="160" height="40" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <rect x="120" y="200" width="160" height="40" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <!-- Frosting layers -->
+  <ellipse cx="200" cy="120" rx="80" ry="10" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <ellipse cx="200" cy="160" rx="80" ry="10" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <ellipse cx="200" cy="200" rx="80" ry="10" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <!-- Whipped cream topping -->
+  <ellipse cx="200" cy="115" rx="85" ry="15" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="2"/>
+  <!-- Cherry -->
+  <circle cx="200" cy="100" r="8" fill="#DC143C" stroke="#8B0000" stroke-width="1"/>
+  <!-- Candle -->
+  <rect x="197" y="70" width="6" height="30" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+  <circle cx="200" cy="68" r="4" fill="#FF4500"/>
+  <!-- Text -->
+  <text x="200" y="270" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Chocolate Cake</text>
+  <text x="200" y="290" font-size="12" text-anchor="middle" fill="#666">$8.00</text>
+</svg>

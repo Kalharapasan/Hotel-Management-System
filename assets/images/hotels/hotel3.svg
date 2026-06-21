@@ -1,0 +1,21 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mountain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E0FFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#mountain)"/>
+  <polygon points="0,200 100,80 200,200" fill="#8B7355"/>
+  <polygon points="150,200 250,60 350,200" fill="#A0826D"/>
+  <polygon points="100,80 120,120 80,120" fill="#FFFFFF"/>
+  <polygon points="250,60 280,120 220,120" fill="#FFFFFF"/>
+  <rect x="140" y="140" width="120" height="60" fill="#8B4513" stroke="#654321" stroke-width="2"/>
+  <polygon points="140,140 200,100 260,140" fill="#654321"/>
+  <rect x="190" y="165" width="20" height="35" fill="#3E2723"/>
+  <rect x="160" y="150" width="15" height="15" fill="#87CEEB"/>
+  <rect x="225" y="150" width="15" height="15" fill="#87CEEB"/>
+  <rect x="210" y="95" width="10" height="50" fill="#A52A2A"/>
+  <circle cx="215" cy="90" r="4" fill="#D3D3D3" opacity="0.6"/>
+  <text x="200" y="280" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Mountain Retreat</text>
+</svg>

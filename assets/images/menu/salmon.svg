@@ -1,0 +1,17 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#FFFACD"/>
+  <!-- Plate -->
+  <circle cx="200" cy="150" r="120" fill="#F5DEB3" stroke="#8B7355" stroke-width="3"/>
+  <!-- Salmon fillet -->
+  <ellipse cx="200" cy="130" rx="80" ry="50" fill="#FA8072" stroke="#DC143C" stroke-width="2"/>
+  <!-- Lemon slice -->
+  <circle cx="140" cy="180" r="25" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+  <line x1="140" y1="155" x2="140" y2="205" stroke="#FFA500" stroke-width="1"/>
+  <line x1="115" y1="180" x2="165" y2="180" stroke="#FFA500" stroke-width="1"/>
+  <!-- Herbs -->
+  <path d="M 260 140 Q 270 120 275 100" stroke="#228B22" stroke-width="2" fill="none"/>
+  <path d="M 270 150 Q 285 140 295 130" stroke="#228B22" stroke-width="2" fill="none"/>
+  <!-- Text -->
+  <text x="200" y="270" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Grilled Salmon</text>
+  <text x="200" y="290" font-size="12" text-anchor="middle" fill="#666">$25.00</text>
+</svg>

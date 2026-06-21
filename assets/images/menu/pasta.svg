@@ -1,0 +1,19 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#FFFACD"/>
+  <!-- Plate -->
+  <circle cx="200" cy="150" r="120" fill="#F5DEB3" stroke="#8B7355" stroke-width="3"/>
+  <!-- Pasta -->
+  <circle cx="200" cy="140" r="70" fill="#FFD700" stroke="#DAA520" stroke-width="2"/>
+  <path d="M 140 140 Q 160 130 180 140 Q 200 130 220 140 Q 240 130 260 140" stroke="#FFD700" stroke-width="3" fill="none"/>
+  <path d="M 140 160 Q 160 150 180 160 Q 200 150 220 160 Q 240 150 260 160" stroke="#FFD700" stroke-width="3" fill="none"/>
+  <!-- Bacon -->
+  <path d="M 170 120 Q 175 110 180 120" stroke="#8B4513" stroke-width="3" fill="none"/>
+  <path d="M 220 120 Q 225 110 230 120" stroke="#8B4513" stroke-width="3" fill="none"/>
+  <!-- Parmesan -->
+  <circle cx="150" cy="170" r="5" fill="#FFFACD" stroke="#FFD700" stroke-width="1"/>
+  <circle cx="180" cy="180" r="5" fill="#FFFACD" stroke="#FFD700" stroke-width="1"/>
+  <circle cx="250" cy="175" r="5" fill="#FFFACD" stroke="#FFD700" stroke-width="1"/>
+  <!-- Text -->
+  <text x="200" y="270" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Pasta Carbonara</text>
+  <text x="200" y="290" font-size="12" text-anchor="middle" fill="#666">$18.00</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#F0E68C"/>
+  <rect x="20" y="20" width="360" height="260" fill="#DAA520" stroke="#8B4513" stroke-width="3"/>
+  <!-- King bed -->
+  <rect x="40" y="70" width="200" height="140" fill="#8B0000" stroke="#660000" stroke-width="2"/>
+  <!-- Twin beds -->
+  <rect x="250" y="70" width="90" height="130" fill="#696969" stroke="#333" stroke-width="2"/>
+  <rect x="250" y="80" width="90" height="60" fill="#A9A9A9"/>
+  <!-- Sofa -->
+  <rect x="40" y="220" width="150" height="40" fill="#CD853F" stroke="#8B4513" stroke-width="2"/>
+  <rect x="190" y="220" width="130" height="40" fill="#FFE4B5" stroke="#8B7355" stroke-width="2"/>
+  <!-- Window with balcony view -->
+  <rect x="320" y="40" width="60" height="140" fill="#87CEEB" stroke="#333" stroke-width="2"/>
+  <!-- Text -->
+  <text x="200" y="285" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Luxury Family Suite</text>
+</svg>

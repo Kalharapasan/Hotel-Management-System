@@ -1,0 +1,28 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="beachSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#E0F6FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFE4B5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#beachSky)"/>
+  <!-- Ocean -->
+  <rect y="150" width="400" height="100" fill="#4A90E2" stroke="#1E90FF" stroke-width="2"/>
+  <!-- Beach sand -->
+  <rect y="250" width="400" height="50" fill="#F4A460"/>
+  <!-- Waves -->
+  <path d="M 0 160 Q 50 150 100 160 T 200 160 T 300 160 T 400 160" stroke="#87CEEB" stroke-width="2" fill="none"/>
+  <path d="M 0 180 Q 50 170 100 180 T 200 180 T 300 180 T 400 180" stroke="#87CEEB" stroke-width="2" fill="none"/>
+  <!-- Sailboat -->
+  <ellipse cx="80" cy="140" rx="30" ry="25" fill="#FFD700" stroke="#8B7355" stroke-width="2"/>
+  <polygon points="80,115 75,145 85,145" fill="#FFFFFF" stroke="#333" stroke-width="1"/>
+  <line x1="80" y1="145" x2="80" y2="160" stroke="#333" stroke-width="1"/>
+  <!-- Palm tree -->
+  <rect x="320" y="220" width="15" height="40" fill="#8B4513"/>
+  <ellipse cx="327" cy="215" rx="35" ry="25" fill="#228B22"/>
+  <!-- Shell -->
+  <ellipse cx="150" cy="270" rx="10" ry="8" fill="#FFB6C1" stroke="#FF69B4" stroke-width="1"/>
+  <!-- Text -->
+  <text x="200" y="285" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Beach Side View</text>
+</svg>

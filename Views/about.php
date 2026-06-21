@@ -3,63 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | LuxeStay</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Outfit', sans-serif; }</style>
+    <title>About - Hotel Management System</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-slate-50">
-    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 py-4 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-indigo-600">LuxeStay</a>
-            <div class="flex gap-8 items-center">
-                <a href="/" class="text-slate-600 font-medium">Home</a>
-                <a href="/rooms" class="text-slate-600 font-medium">Rooms</a>
-                <a href="/about" class="text-indigo-600 font-bold">About</a>
-                <a href="/contact" class="text-slate-600 font-medium">Contact</a>
-            </div>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🏨 Hotel Management</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/rooms">Rooms</a></li>
+                <li><a href="/restaurant">Restaurant</a></li>
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <?php if(isset($_SESSION['user_id'])): ?>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                <?php else: ?>
+                    <li><a href="/login">Login</a></li>
+                <?php endif; ?>
+            </ul>
         </div>
     </nav>
 
-    <main>
-        <section class="py-24 bg-gradient-premium text-white">
-            <div class="max-w-4xl mx-auto px-4 text-center">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">Our Story</h1>
-                <p class="text-xl opacity-90 leading-relaxed">Redefining luxury hospitality since 2010. We believe every stay should be an unforgettable masterpiece.</p>
+    <div class="container">
+        <section class="about-section">
+            <h1>About Our Hotel Management System</h1>
+            
+            <div class="about-content">
+                <p>Welcome to our state-of-the-art Hotel Management System, designed to provide the best booking experience for our guests.</p>
+                
+                <h2>Our Features</h2>
+                <ul>
+                    <li>🛏️ Easy room booking system</li>
+                    <li>🍽️ Restaurant menu and ordering</li>
+                    <li>👤 User profile management</li>
+                    <li>💳 Secure payment processing</li>
+                    <li>📊 Advanced admin dashboard</li>
+                    <li>🔒 Enterprise-level security</li>
+                </ul>
+
+                <h2>Our Mission</h2>
+                <p>To provide the best hospitality experience by leveraging modern technology and excellent customer service.</p>
+
+                <h2>Contact Us</h2>
+                <p>Email: info@hotelmanagement.com</p>
+                <p>Phone: +1-800-HOTEL-123</p>
+                <p>Address: 123 Hotel Street, City, Country</p>
             </div>
         </section>
+    </div>
 
-        <section class="py-24 max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="animate-on-scroll">
-                    <h2 class="text-4xl font-bold text-slate-900 mb-6">World-Class Excellence</h2>
-                    <p class="text-slate-500 text-lg mb-8 leading-relaxed">At LuxeStay, we don't just provide rooms; we provide experiences. Our dedicated team of over 500 professionals works tirelessly to ensure that every detail of your stay is perfect.</p>
-                    <div class="grid grid-cols-2 gap-8">
-                        <div>
-                            <div class="text-4xl font-bold text-indigo-600">50+</div>
-                            <div class="text-slate-400 font-medium">Luxury Hotels</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-bold text-indigo-600">10k+</div>
-                            <div class="text-slate-400 font-medium">Happy Guests</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative rounded-[48px] overflow-hidden shadow-2xl animate-on-scroll">
-                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" class="w-full h-[500px] object-cover" alt="About LuxeStay">
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-slate-900 text-white py-12 mt-24">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="text-2xl font-bold mb-4">LuxeStay</div>
-            <p class="text-slate-400">&copy; <?php echo date('Y'); ?> LuxeStay International. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Hotel Management System. All rights reserved.</p>
     </footer>
-
-    <script src="/js/main.js"></script>
 </body>
 </html>
